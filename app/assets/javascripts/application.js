@@ -11,6 +11,19 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery
+//= require jquery_ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+//= require javascripts/bootstrap.min.js
+//= require javascripts/popper
+//= require plugins/greensock/TweenMax.min.js
+//= require plugins/greensock/TimelineMax.min.js
+//= require plugins/scrollmagic/ScrollMagic.min.js
+//= require plugins/greensock/animation.gsap.min.js
+//= require plugins/greensock/ScrollToPlugin.min.js
+//= require plugins/easing/easing.js
+//= require plugins/colorbox/jquery.colorbox-min.js
+//= require plugins/progressbar/progressbar.min.js
+//= require plugins/parallax-js-master/parallax.min.js
+

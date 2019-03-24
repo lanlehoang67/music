@@ -10,6 +10,55 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
+ *= require stylesheets/bootstrap.min.css
+ *= require plugins/font-awesome-4.7.0/css/font-awesome.css
+ *= require plugins/colorbox/colorbox.css
  */
+
+    .searchbar{
+  display: block;
+    height: 100%;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding-left: 20px;
+    padding-right: 20px;
+    }
+
+    .search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_input{
+    padding: 0 10px;
+    width: 450px;
+    caret-color:red;
+    transition: width 0.4s linear;
+    border: solid 0.5px;
+    border-radius: 16px;
+    }
+
+    .searchbar:hover > .search_icon{
+    background: white;
+    color: #e74c3c;
+    }
+
+    .search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    }
