@@ -1,5 +1,12 @@
 {
   "name": "music-app",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "jquery-colorbox": "^1.6.4"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lanlehoang67/MusicApp.git",
+  "author": "lanlehoang10 <lanlehoang10@gmail.com>",
+  "license": "MIT"
 }
