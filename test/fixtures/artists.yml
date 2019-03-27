@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  date_of_birth: 2019-03-27 11:11:07
+  begin_year: 1
+  end_date: 2019-03-27 11:11:07
+  website: MyString
+  picture: MyString
+
+two:
+  name: MyString
+  date_of_birth: 2019-03-27 11:11:07
+  begin_year: 1
+  end_date: 2019-03-27 11:11:07
+  website: MyString
+  picture: MyString

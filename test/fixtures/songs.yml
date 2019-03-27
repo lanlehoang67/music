@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  artist: one
+  url: MyString
+  title: MyString
+  content: MyString
+  length: MyString
+  views: 1
+  genre: one
+  album: one
+  status: MyString
+
+two:
+  artist: two
+  url: MyString
+  title: MyString
+  content: MyString
+  length: MyString
+  views: 1
+  genre: two
+  album: two
+  status: MyString

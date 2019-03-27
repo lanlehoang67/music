@@ -25,5 +25,4 @@
 //= require plugins/easing/easing.js
 //= require plugins/colorbox/jquery.colorbox-min.js
 //= require plugins/progressbar/progressbar.min.js
-//= require plugins/parallax-js-master/parallax.min.js
 
