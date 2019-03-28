@@ -15,7 +15,8 @@
 //= require jquery_ujs
 //= require activestorage
 //= require turbolinks
-//= require javascripts/bootstrap.min.js
+//= require popper
+//= require bootstrap
 //= require javascripts/popper
 //= require plugins/greensock/TweenMax.min.js
 //= require plugins/greensock/TimelineMax.min.js
@@ -25,4 +26,4 @@
 //= require plugins/easing/easing.js
 //= require plugins/colorbox/jquery.colorbox-min.js
 //= require plugins/progressbar/progressbar.min.js
-
+//= require plugins/parallax-js-master/parallax.min.js

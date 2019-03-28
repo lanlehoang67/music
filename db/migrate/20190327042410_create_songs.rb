@@ -7,7 +7,6 @@ class CreateSongs < ActiveRecord::Migration[5.2]
       t.string :content
       t.string :length
       t.integer :views
-      t.references :genre, foreign_key: true
       t.references :album, foreign_key: true
       t.string :status
 

@@ -13,6 +13,9 @@
   <body>
     <div class="super_container">
       <!-- Header -->
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
       <header class="header trans_400">
         <!-- Logo -->
         <div class="logo">
@@ -24,7 +27,7 @@
               <div class="header_content d-flex flex-row align-items-center justify-content-start trans_400">
                 <nav class="main_nav">
                   <ul class="d-flex flex-row align-items-start justify-content-start">
-                    <li><a href="<%= static_pages_home_path %>">Home</a></li>
+                    <li><a href="<%= root_path %>">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="<%= songs_path %>">Songs</a></li>
                     <li><a href="#">Blog</a></li>
@@ -40,6 +43,10 @@
           <!-- Submit -->
 
 
+<!-- modal -->
+
+
+<!-- end modal -->
         <div class="searchbar">
           <input class="search_input" type="text" name="" placeholder="Search...">
           <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
@@ -48,11 +55,16 @@
           <!-- Social -->
           <div class="social">
             <ul class="d-flex flex-row align-items-start justify-content-start">
-              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-soundcloud" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
+              <% if user_signed_in? %>
+                <li>
+                  <%= link_to destroy_user_session_path, method: 'delete' do %>
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                  <% end %>
+                </li>
+              <% else %>
+                <li><a href="#" data-toggle="modal"  data-target="#signUpModal"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                <li><a href="#"data-toggle="modal" data-target="#logInModal"><i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
+              <% end %>
             </ul>
           </div>
           <!-- Hamburger -->
@@ -212,6 +224,10 @@
         </div>
       </footer>
     </div>
+<% unless user_signed_in? %>
+  <%= render partial: 'devise/registrations/new' %>
+  <%= render partial: 'devise/sessions/new' %>
+<% end %>
 
   </body>
 </html>
