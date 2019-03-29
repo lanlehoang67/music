@@ -2,3 +2,6 @@
 //= require plugins/jPlayer/jplayer.playlist.min.js
 //= require plugins/Isotope/isotope.pkgd.min.js
 //= require episode.js.erb
+
+var lyric = $('.intro-text > p').text()
+console.log(lyric);

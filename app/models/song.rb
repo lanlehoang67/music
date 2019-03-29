@@ -3,4 +3,6 @@ class Song < ApplicationRecord
 	has_many :song_genres
 	has_many :lyrics
 	belongs_to :artist
+  delegate :name, to: :artist, prefix: true
+  scope :high_views, ->{all.order(views: :desc).limit(3)}
 end

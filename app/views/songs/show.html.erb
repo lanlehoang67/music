@@ -6,14 +6,14 @@
 
 
   <div class="home">
-    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="../assets/episode.jpg" data-speed="0.8"></div>
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="../assets/apple.jpg" data-speed="0.8"></div>
     <div class="home_container">
       <div class="container">
         <div class="row">
           <div class="col">
             <div class="home_content text-center">
-              <div class="home_title"><h1>Audio - Lorem ipsum dolor sit amet consectetur</h1></div>
-              <div class="home_subtitle text-center">24 September, 2018</div>
+              <div class="home_title"><h1><%= @song.title %></h1></div>
+
             </div>
           </div>
         </div>
@@ -106,7 +106,7 @@
         <div class="row">
           <div class="col-lg-3">
             <!-- Episode Image -->
-            <div class="episode_image"><img src="../assets/episode_2.jpg" alt=""></div>
+            <div class="episode_image"><img src="../assets/<%= @song.picture  %>" alt=""></div>
           </div>
         </div>
       </div>
@@ -121,15 +121,11 @@
 
             <!-- Categories -->
             <div class="sidebar_list">
-              <div class="sidebar_title">Categories</div>
+              <div class="sidebar_title">Genres</div>
               <ul>
-                <li><a href="#">Travel</a></li>
-                <li><a href="#">Music</a></li>
-                <li><a href="#">Lifestyle</a></li>
-                <li><a href="#">Social Media</a></li>
-                <li><a href="#">Art</a></li>
-                <li><a href="#">Audiobooks</a></li>
-                <li><a href="#">Documentaries</a></li>
+                <% @song.song_genres.each do |sg| %>
+                <li><a href="#"><%= sg.genre.title %></a></li>
+                <% end %>
               </ul>
             </div>
 
@@ -175,47 +171,29 @@
         <!-- Episode -->
         <div class="col-lg-9 episode_col order-lg-2 order-1">
           <div class="intro">
-            <div class="section_title">Audio Podcast - New Technologies that will rule the word</div>
+            <div class="section_title"><%= @song.artist_name %></div>
             <div class="intro_text">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum malesuada tellus a pretium. Proin quam nisi, maximus in pulvinar sed, viverra vitae est. Ut nibh nisl, malesuada nec massa nec, molestie varius lorem. Mauris aliquet eros eu luctus pulvinar. Suspendisse dapibus iaculis tellus, dignissim posuere felis elementum a. Curabitur a nibh vel eros accumsan semper vitae quis enim. Vivamus id leo a ante cursus semper. Suspendisse sit amet mattis mi. Pellentesque tellus diam, vehicula nec felis ut, suscipit porttitor nisl. Nam sit amet consequat nulla, ut mollis dolor. Vivamus id tristique tortor. Quisque ultrices odio urna, a maximus dui tincidunt sit amet. Morbi sagittis ipsum nec sem egestas congue.</p>
+              <p class="lyrics"><%= @song.lyrics.first.text %></p>
             </div>
           </div>
           <div class="guests">
-            <div class="section_title">Guests</div>
+            <div class="section_title">Suggested Songs</div>
             <div class="guests_container d-flex flex-md-row flex-column align-items-md-start align-items-center justify-content-start">
-
-              <!-- Guest -->
-              <div class="guest_container">
-                <div class="guest">
-                  <div class="guest_image"><img src="../assets/guest_1.jpg" alt="https://unsplash.com/@stairhopper"></div>
-                  <div class="guest_content text-center">
-                    <div class="guest_name"><a href="#">Michael Smith</a></div>
-                    <div class="guest_title">Developer</div>
+              <% @song.artist.songs.each do |song| %>
+                <div class="guest_container">
+                  <div class="guest">
+                    <div class="guest_image"><img src="../assets/<%= song.picture %>" alt="https://unsplash.com/@stairhopper"></div>
+                    <div class="guest_content text-center">
+                      <div class="guest_name"><a href="#"><%= song.title %></a></div>
+                      <div class="guest_title"><%= @song.artist_name %></div>
+                    </div>
                   </div>
                 </div>
-              </div>
-
+              <% end %>
               <!-- Guest -->
-              <div class="guest_container">
-                <div class="guest">
-                  <div class="guest_image"><img src="../assets/guest_2.jpg" alt="https://unsplash.com/@eyeforebony"></div>
-                  <div class="guest_content text-center">
-                    <div class="guest_name"><a href="#">Samantha Doe</a></div>
-                    <div class="guest_title">Developer</div>
-                  </div>
-                </div>
-              </div>
 
-              <!-- Guest -->
-              <div class="guest_container">
-                <div class="guest">
-                  <div class="guest_image"><img src="../assets/guest_3.jpg" alt="https://unsplash.com/@onurozkardes"></div>
-                  <div class="guest_content text-center">
-                    <div class="guest_name"><a href="#">James Williams</a></div>
-                    <div class="guest_title">Developer</div>
-                  </div>
-                </div>
-              </div>
+
+
 
             </div>
           </div>
