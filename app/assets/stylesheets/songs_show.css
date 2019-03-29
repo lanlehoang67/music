@@ -3,3 +3,6 @@
 *= require episode.css
 *= require episode_responsive.css
 */
+.section_title{
+  text-align: center;
+}
