@@ -1,12 +1,11 @@
 
       <%= javascript_include_tag 'songs_show' %>
 
-
       <%= stylesheet_link_tag 'songs_show' %>
 
 
   <div class="home">
-    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="../assets/apple.jpg" data-speed="0.8"></div>
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="../assets/uni.jpg" data-speed="0.8"></div>
     <div class="home_container">
       <div class="container">
         <div class="row">
@@ -287,4 +286,13 @@
             <div><div><a href="#">health</a></div></div>
           </div>
         </div>
-
+<script language="javascript">
+ $(document).ready(function(){
+  setHeader();
+  initMenu();
+  initFavs();
+  initSvg();
+  initSinglePlayer('<%= @song.url %>');
+  initGallery();
+ })
+</script>
