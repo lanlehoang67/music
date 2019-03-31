@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_03_29_014240) do
 
   create_table "lyrics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.float "start"
-    t.string "text"
+    t.text "text", limit: 4294967295
     t.float "end"
     t.bigint "song_id"
     t.datetime "created_at", null: false
