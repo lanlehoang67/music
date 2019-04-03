@@ -1,19 +1,18 @@
 
       <%= javascript_include_tag 'songs_show' %>
 
-
       <%= stylesheet_link_tag 'songs_show' %>
 
 
   <div class="home">
-    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="../assets/episode.jpg" data-speed="0.8"></div>
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="../assets/uni.jpg" data-speed="0.8"></div>
     <div class="home_container">
       <div class="container">
         <div class="row">
           <div class="col">
             <div class="home_content text-center">
-              <div class="home_title"><h1>Audio - Lorem ipsum dolor sit amet consectetur</h1></div>
-              <div class="home_subtitle text-center">24 September, 2018</div>
+              <div class="home_title"><h1><%= @song.title %></h1></div>
+
             </div>
           </div>
         </div>
@@ -106,7 +105,7 @@
         <div class="row">
           <div class="col-lg-3">
             <!-- Episode Image -->
-            <div class="episode_image"><img src="../assets/episode_2.jpg" alt=""></div>
+            <div class="episode_image"><img src="../assets/<%= @song.picture  %>" alt=""></div>
           </div>
         </div>
       </div>
@@ -121,37 +120,16 @@
 
             <!-- Categories -->
             <div class="sidebar_list">
-              <div class="sidebar_title">Categories</div>
+              <div class="sidebar_title">Genres</div>
               <ul>
-                <li><a href="#">Travel</a></li>
-                <li><a href="#">Music</a></li>
-                <li><a href="#">Lifestyle</a></li>
-                <li><a href="#">Social Media</a></li>
-                <li><a href="#">Art</a></li>
-                <li><a href="#">Audiobooks</a></li>
-                <li><a href="#">Documentaries</a></li>
+                <% @song.song_genres.each do |sg| %>
+                <li><a href="#"><%= sg.genre.title %></a></li>
+                <% end %>
               </ul>
             </div>
 
             <!-- Tags -->
-            <div class="sidebar_tags">
-              <div class="sidebar_title">Tags</div>
-              <div class="tags">
-                <ul class="d-flex flex-row align-items-start justify-content-start flex-wrap">
-                  <li><a href="#">music</a></li>
-                  <li><a href="#">art</a></li>
-                  <li><a href="#">technology</a></li>
-                  <li><a href="#">travel & food</a></li>
-                  <li><a href="#">viral</a></li>
-                  <li><a href="#">interview</a></li>
-                  <li><a href="#">social media</a></li>
-                  <li><a href="#">development</a></li>
-                  <li><a href="#">success</a></li>
-                  <li><a href="#">did you know?</a></li>
-                  <li><a href="#">live</a></li>
-                </ul>
-              </div>
-            </div>
+
 
             <!-- Archive -->
             <div class="sidebar_archive">
@@ -175,47 +153,29 @@
         <!-- Episode -->
         <div class="col-lg-9 episode_col order-lg-2 order-1">
           <div class="intro">
-            <div class="section_title">Audio Podcast - New Technologies that will rule the word</div>
+            <div class="section_title"><%= @song.artist_name %></div>
             <div class="intro_text">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum malesuada tellus a pretium. Proin quam nisi, maximus in pulvinar sed, viverra vitae est. Ut nibh nisl, malesuada nec massa nec, molestie varius lorem. Mauris aliquet eros eu luctus pulvinar. Suspendisse dapibus iaculis tellus, dignissim posuere felis elementum a. Curabitur a nibh vel eros accumsan semper vitae quis enim. Vivamus id leo a ante cursus semper. Suspendisse sit amet mattis mi. Pellentesque tellus diam, vehicula nec felis ut, suscipit porttitor nisl. Nam sit amet consequat nulla, ut mollis dolor. Vivamus id tristique tortor. Quisque ultrices odio urna, a maximus dui tincidunt sit amet. Morbi sagittis ipsum nec sem egestas congue.</p>
+              <p class="lyrics"><%= @song.lyrics.first.text %></p>
             </div>
           </div>
           <div class="guests">
-            <div class="section_title">Guests</div>
+            <div class="section_title">Suggested Songs</div>
             <div class="guests_container d-flex flex-md-row flex-column align-items-md-start align-items-center justify-content-start">
-
-              <!-- Guest -->
-              <div class="guest_container">
-                <div class="guest">
-                  <div class="guest_image"><img src="../assets/guest_1.jpg" alt="https://unsplash.com/@stairhopper"></div>
-                  <div class="guest_content text-center">
-                    <div class="guest_name"><a href="#">Michael Smith</a></div>
-                    <div class="guest_title">Developer</div>
+              <% @song.artist.songs.each do |song| %>
+                <div class="guest_container">
+                  <div class="guest">
+                    <div class="guest_image"><img src="../assets/<%= song.picture %>" alt="https://unsplash.com/@stairhopper"></div>
+                    <div class="guest_content text-center">
+                      <div class="guest_name"><a href="#"><%= song.title %></a></div>
+                      <div class="guest_title"><%= @song.artist_name %></div>
+                    </div>
                   </div>
                 </div>
-              </div>
-
+              <% end %>
               <!-- Guest -->
-              <div class="guest_container">
-                <div class="guest">
-                  <div class="guest_image"><img src="../assets/guest_2.jpg" alt="https://unsplash.com/@eyeforebony"></div>
-                  <div class="guest_content text-center">
-                    <div class="guest_name"><a href="#">Samantha Doe</a></div>
-                    <div class="guest_title">Developer</div>
-                  </div>
-                </div>
-              </div>
 
-              <!-- Guest -->
-              <div class="guest_container">
-                <div class="guest">
-                  <div class="guest_image"><img src="../assets/guest_3.jpg" alt="https://unsplash.com/@onurozkardes"></div>
-                  <div class="guest_content text-center">
-                    <div class="guest_name"><a href="#">James Williams</a></div>
-                    <div class="guest_title">Developer</div>
-                  </div>
-                </div>
-              </div>
+
+
 
             </div>
           </div>
@@ -224,55 +184,20 @@
           <div class="comments">
             <div class="section_title">Comments</div>
             <div class="comments_container">
-              <ul>
+              <ul class="comments_list">
 
                 <!-- Comment -->
-                <li class="d-flex flex-row">
-                  <div>
-                    <div class="comment_image"><img src="../assets/user_1.jpg" alt=""></div>
-                  </div>
-                  <div class="comment_content">
-                    <div class="user_name"><a href="#">Michael Smith</a></div>
-                    <div class="comment_text">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum malesuada tellus a pretium. Proin quam nisi, maximus in pulvinar sed, viverra vitae es.</p>
-                    </div>
-                  </div>
-                </li>
-
+                <%= render partial: "comments/comment", collection: @comments  %>
+                <div class="comment-bar"><%= paginate @comments %></div>
                 <!-- Comment -->
-                <li class="d-flex flex-row">
-                  <div>
-                    <div class="comment_image"><img src="../assets/user_2.jpg" alt=""></div>
-                  </div>
-                  <div class="comment_content">
-                    <div class="user_name"><a href="#">Christinne Doe</a></div>
-                    <div class="comment_text">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum malesuada tellus a pretium. Proin quam nisi, maximus in pulvinar sed, viverra vitae es.</p>
-                    </div>
-                  </div>
-                </li>
+
 
               </ul>
             </div>
           </div>
 
           <!-- Leave a Comment -->
-          <div class="comment_form_container">
-            <div class="section_title">Leave a comment</div>
-            <form action="#" id="comment_form" class="comment_form">
-              <div class="row">
-                <div class="col-md-6">
-                  <input type="text" class="comment_input" placeholder="Name" required="required">
-                </div>
-                <div class="col-md-6">
-                  <input type="email" class="comment_input" placeholder="E-mail" required="required">
-                </div>
-              </div>
-              <div><input type="text" class="comment_input" placeholder="Subject"></div>
-              <div><textarea class="comment_input comment_textarea" placeholder="Message" required="required"></textarea></div>
-              <button class="comment_button button_fill">send</button>
-            </form>
-          </div>
+          <%= render "comments/form" %>
         </div>
       </div>
     </div>
@@ -309,4 +234,13 @@
             <div><div><a href="#">health</a></div></div>
           </div>
         </div>
-
+<script language="javascript">
+ $(document).ready(function(){
+  setHeader();
+  initMenu();
+  initFavs();
+  initSvg();
+  initSinglePlayer('<%= @song.url %>');
+  initGallery();
+ })
+</script>

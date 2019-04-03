@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get 'users/edit'
   get 'users/update'
   resources :songs
+  resources :songs, only: [:show] do
+    resources :comments
+  end
 
   root 'static_pages#home'
   devise_for :users
