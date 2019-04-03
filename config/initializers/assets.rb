@@ -15,6 +15,7 @@ Rails.application.config.assets.precompile += %w( songs_index.js )
 Rails.application.config.assets.precompile += %w( songs_index.css )
 Rails.application.config.assets.precompile += %w( static_pages.js )
 Rails.application.config.assets.precompile += %w( static_pages.css )
+
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.

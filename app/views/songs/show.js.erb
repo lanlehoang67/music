@@ -1,0 +1,5 @@
+
+  $.ajax().done(function(){
+          $('.comments_list').html('<%= j render @comments %>').appendTo('.comments_list');
+          $('.paginate-bar').html('<%= j paginate @comments, remote: true %>').appendTo('.paginate-bar');
+  })
