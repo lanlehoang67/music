@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+  <div class="comment_form_container">
+    <div class="section_title">Leave a comment</div>
+    <form action="#" id="comment_form" class="comment_form">
+    </form>
+    <%= form_for(@comment, url: song_comments_path(song_id: params[:id]), remote: true, method: :post, :html => {id: "comment_form",class: "comment_form"} ) do |f| %>
+      <div>
+        <%= f.text_field :text, class: "comment_input comment_textarea", placeholder: "Message" %>
+      </div>
+      <%= f.submit "send", class: "comment_button button_fill" %>
+    <% end %>
+  </div>
+<% else %>
+  <div class="comment_form_container">
+    <div class="section_title">Please log in to comment</div>
+  </div>
+<% end %>
