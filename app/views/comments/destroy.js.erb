@@ -1,5 +1,6 @@
 $(document).ready(function(){
   $.ajax().done(function(){
           $('.comments_list').html('<%= j render partial: "comments/comment", collection: @comment.song.comments.sort_by(&:created_at) %>').appendTo('.comments_list');
+          $('.paginate-bar').html('<%= j paginate @comments, remote: true %>')
   })
 })
