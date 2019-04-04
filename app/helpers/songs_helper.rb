@@ -6,4 +6,12 @@ module SongsHelper
       "<img src='../assets/avatar.png'/>".html_safe
     end
   end
+
+  def load_genres song
+    if(song.genres.any?)
+      song.genres[0].title
+    else
+      "No Genre"
+    end
+  end
 end
