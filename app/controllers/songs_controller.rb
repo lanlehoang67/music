@@ -2,6 +2,10 @@ class SongsController < ApplicationController
   before_action :load_song, :load_comments, only: [:show]
   before_action :load_genres, :load_songs, only: [:index]
   def index
+    respond_to do |f|
+      f.html
+      f.js
+    end
   end
 
   def show
@@ -30,7 +34,7 @@ class SongsController < ApplicationController
   end
 
   def load_songs
-    @songs = Song.all.take(5)
+    @songs = Song.all.page params[:page]
   end
 
   def load_genres

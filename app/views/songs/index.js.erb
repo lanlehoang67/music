@@ -1,0 +1,5 @@
+
+  $.ajax().done(function(){
+          $('.episodes_container').html('<%= j render @songs %>').appendTo('.episodes_container');
+          $('#paginate-bar').html('<%= j paginate @songs, remote: true %>').appendTo('#paginate-bar');
+  })

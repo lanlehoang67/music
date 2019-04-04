@@ -10,7 +10,7 @@
                 </div>
               </div>
               <div class="episode_content">
-                <div class="episode_name"><a href="episode.html"><%= song.title %></a></div>
+                <div class="episode_name"><a href="<%= song_path song %>"><%= song.title %></a></div>
                 <div class="episode_date"><a href="#">24 September, 2018</a></div>
                 <div class="show_info d-flex flex-row align-items-start justify-content-start">
                   <div class="show_fav d-flex flex-row align-items-center justify-content-start">
@@ -30,8 +30,8 @@
                 <div class="single_player_container">
 
                   <div class="single_player d-flex flex-row align-items-center justify-content-start">
-                    <div id="jplayer_1" class="jp-jplayer"></div>
-                    <div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
+                    <div id="jplayer_<%= song_counter +1 %>" class="jp-jplayer"></div>
+                    <div id="jp_container_<%= song_counter +1 %>" class="jp-audio" role="application" aria-label="media player">
                       <div class="jp-type-single">
                         <div class="player_controls">
                           <div class="jp-gui jp-interface d-flex flex-row align-items-center justify-content-start">
@@ -72,15 +72,16 @@
                 </div>
               </div>
             </div>
+
 <script language="javascript">
   function initSinglePlayer(song)
   {
-    var index = 1;
+
     var a = "<%= asset_path('touhou.mp3') %>";
  var b =a.slice(0,8);
     if($(".jp-jplayer").length)
     {
-      $(`#jplayer_${index}`).jPlayer({
+      $('#jplayer_<%= song_counter +1 %>').jPlayer({
         ready: function () {
           $(this).jPlayer("setMedia", {
             title:"Better Days",
@@ -93,7 +94,7 @@
         },
         swfPath: b+'jquery.jplayer.min.js',
         supplied: "mp3",
-        cssSelectorAncestor: "#jp_container_1",
+        cssSelectorAncestor: "#jp_container_<%= song_counter +1%>",
         wmode: "window",
         globalVolume: false,
         useStateClassSkin: true,
@@ -109,9 +110,9 @@
         warningAlerts: false
       });
     }
-        console.log(index);
 
-    index++;
+console.log('<%= song_counter +1%>')
+
   }
 
 
