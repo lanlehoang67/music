@@ -5,7 +5,7 @@
 
 
       <div class="home">
-        <div class="background_image" style="background-image:url(../assets/index.jpg)"></div>
+        <div class="background_image" style="background-image:url(../assets/junko.jpg)"></div>
         <div class="home_container">
           <div class="container">
             <div class="row">
@@ -13,15 +13,13 @@
                 <div class="home_content">
                   <div class="tags">
                     <ul class="d-flex flex-row align-items-start justify-content-start">
-                      <li><a href="#">lifestyle</a></li>
-                      <li><a href="#">interview</a></li>
-                      <li><a href="#">last episode</a></li>
+                      <li><a href="#">Music</a></li>
                     </ul>
                   </div>
                   <div class="home_title">
-                    <h1>Season 4 Episode 48 available.</h1>
+                    <h1>New song ?</h1>
                   </div>
-                  <div class="home_subtitle">Check out my latest podcast a massive interview with John Doe</div>
+                  <div class="home_subtitle">Check out now!</div>
                   <div class="track_info">
                     <ul class="d-flex flex-row align-items-start justify-content-start">
                       <li><a href="#">September 24, 2018</a></li>
@@ -46,117 +44,13 @@
         <div class="container">
           <div class="row shows_row">
             <!-- Show -->
-            <div class="col-lg-4">
-              <div class="show">
-                <div class="show_image">
-                  <a href="episode.html">
-                  <img src="../assets/show_1.jpg" alt="https://unsplash.com/@icons8">
-                  </a>
-                  <div class="show_tags">
-                    <div class="tags">
-                      <ul class="d-flex flex-row align-items-start justify-content-start">
-                        <li><a href="#">Music</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="show_play_icon"><img src="../assets/play.svg" alt="https://www.flaticon.com/authors/cole-bemis"></div>
-                </div>
-                <div class="show_content">
-                  <div class="show_date"><a href="#">24 September, 2018</a></div>
-                  <div class="show_title"><a href="episode.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></div>
-                  <div class="show_info d-flex flex-row align-items-start justify-content-start">
-                    <div class="show_fav d-flex flex-row align-items-center justify-content-start">
-                      <div class="show_fav_icon show_info_icon"><img class="svg" src="../assets/heart.svg" alt=""></div>
-                      <div class="show_fav_count">2371</div>
-                    </div>
-                    <div class="show_comments">
-                      <a href="#">
-                        <div class="d-flex flex-row align-items-center justify-content-start">
-                          <div class="show_comments_icon show_info_icon"><img class="svg" src="../assets/speech-bubble.svg" alt=""></div>
-                          <div class="show_comments_count">88 Comments</div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+              <%= render partial: "static_pages/song", collection: @songs %>
             <!-- Show -->
-            <div class="col-lg-4">
-              <div class="show">
-                <div class="show_image">
-                  <a href="episode.html">
-                  <img src="../assets/show_2.jpg" alt="https://unsplash.com/@pawel_czerwinski">
-                  </a>
-                  <div class="show_tags">
-                    <div class="tags">
-                      <ul class="d-flex flex-row align-items-start justify-content-start">
-                        <li><a href="#">Experiment</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="show_play_icon"><img src="../assets/play.svg" alt="https://www.flaticon.com/authors/cole-bemis"></div>
-                </div>
-                <div class="show_content">
-                  <div class="show_date"><a href="#">24 September, 2018</a></div>
-                  <div class="show_title"><a href="episode.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></div>
-                  <div class="show_info d-flex flex-row align-items-start justify-content-start">
-                    <div class="show_fav d-flex flex-row align-items-center justify-content-start">
-                      <div class="show_fav_icon show_info_icon"><img class="svg" src="../assets/heart.svg" alt=""></div>
-                      <div class="show_fav_count">2371</div>
-                    </div>
-                    <div class="show_comments">
-                      <a href="#">
-                        <div class="d-flex flex-row align-items-center justify-content-start">
-                          <div class="show_comments_icon show_info_icon"><img class="svg" src="../assets/speech-bubble.svg" alt=""></div>
-                          <div class="show_comments_count">88 Comments</div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Show -->
-            <div class="col-lg-4">
-              <div class="show">
-                <div class="show_image">
-                  <a href="episode.html">
-                  <img src="../assets/show_3.jpg" alt="https://unsplash.com/@trevcole">
-                  </a>
-                  <div class="show_tags">
-                    <div class="tags">
-                      <ul class="d-flex flex-row align-items-start justify-content-start">
-                        <li><a href="#">Music</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="show_play_icon"><img src="../assets/play.svg" alt="https://www.flaticon.com/authors/cole-bemis"></div>
-                </div>
-                <div class="show_content">
-                  <div class="show_date"><a href="#">24 September, 2018</a></div>
-                  <div class="show_title"><a href="episode.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></div>
-                  <div class="show_info d-flex flex-row align-items-start justify-content-start">
-                    <div class="show_fav d-flex flex-row align-items-center justify-content-start">
-                      <div class="show_fav_icon show_info_icon"><img class="svg" src="../assets/heart.svg" alt=""></div>
-                      <div class="show_fav_count">2371</div>
-                    </div>
-                    <div class="show_comments">
-                      <a href="#">
-                        <div class="d-flex flex-row align-items-center justify-content-start">
-                          <div class="show_comments_icon show_info_icon"><img class="svg" src="../assets/speech-bubble.svg" alt=""></div>
-                          <div class="show_comments_count">88 Comments</div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
           </div>
           <div class="row">
             <div class="col text-center">
-              <div class="button_fill shows_button"><a href="#">browse shows</a></div>
+              <div class="button_fill shows_button"><a href="#">browse musics</a></div>
             </div>
           </div>
         </div>
@@ -172,85 +66,12 @@
           </div>
           <div class="row shows_2_row">
             <!-- Show -->
-            <div class="col-xl-3 col-md-6">
-              <div class="show">
-                <div class="show_image">
-                  <a href="episode.html">
-                    <img src="../assets/show_4.jpg" alt="https://unsplash.com/@h4rd3n">
-                    <div class="show_play_icon"><img src="../assets/play.svg" alt="https://www.flaticon.com/authors/cole-bemis"></div>
-                    <div class="show_title_2">Cras malesuada ipsum sapien.</div>
-                  </a>
-                  <div class="show_tags">
-                    <div class="tags">
-                      <ul class="d-flex flex-row align-items-start justify-content-start">
-                        <li><a href="#">travel</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <%= render partial: "static_pages/category", collection: @categories %>
             <!-- Show -->
-            <div class="col-xl-3 col-md-6">
-              <div class="show">
-                <div class="show_image">
-                  <a href="episode.html">
-                    <img src="../assets/show_5.jpg" alt="https://unsplash.com/@gohobo">
-                    <div class="show_play_icon"><img src="../assets/play.svg" alt="https://www.flaticon.com/authors/cole-bemis"></div>
-                    <div class="show_title_2">Cras malesuada ipsum sapien.</div>
-                  </a>
-                  <div class="show_tags">
-                    <div class="tags">
-                      <ul class="d-flex flex-row align-items-start justify-content-start">
-                        <li><a href="#">lifestyle</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Show -->
-            <div class="col-xl-3 col-md-6">
-              <div class="show">
-                <div class="show_image">
-                  <a href="episode.html">
-                    <img src="../assets/show_6.jpg" alt="https://unsplash.com/@zacharykeimig">
-                    <div class="show_play_icon"><img src="../assets/play.svg" alt="https://www.flaticon.com/authors/cole-bemis"></div>
-                    <div class="show_title_2">Cras malesuada ipsum sapien.</div>
-                  </a>
-                  <div class="show_tags">
-                    <div class="tags">
-                      <ul class="d-flex flex-row align-items-start justify-content-start">
-                        <li><a href="#">music</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Show -->
-            <div class="col-xl-3 col-md-6">
-              <div class="show">
-                <div class="show_image">
-                  <a href="episode.html">
-                    <img src="../assets/show_7.jpg" alt="https://unsplash.com/@bkview">
-                    <div class="show_play_icon"><img src="../assets/play.svg" alt="https://www.flaticon.com/authors/cole-bemis"></div>
-                    <div class="show_title_2">Cras malesuada ipsum sapien.</div>
-                  </a>
-                  <div class="show_tags">
-                    <div class="tags">
-                      <ul class="d-flex flex-row align-items-start justify-content-start">
-                        <li><a href="#">travel</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
           <div class="row">
             <div class="col text-center">
-              <div class="button_fill shows_2_button"><a href="#">browse shows</a></div>
+              <div class="button_fill shows_2_button"><a href="#">browse genres</a></div>
             </div>
           </div>
         </div>
