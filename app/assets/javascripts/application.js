@@ -26,5 +26,53 @@
 //= require plugins/easing/easing.js
 //= require plugins/colorbox/jquery.colorbox-min.js
 //= require plugins/parallax-js-master/parallax.min.js
+//= require plugins/EasyAutocomplete-1.3.5/jquery.easy-autocomplete.min.js
 
 
+// $(document).on("input", ".search_input", function(){
+//   var song = $(this).val();
+
+//   $.ajax({
+//     url: "/songs/new",
+//     method: "GET",
+//     dataType: "json",
+//     data: {song: song},
+//     error: function (xhr, status, error) {
+//       console.error('AJAX Error: ' + status + error);
+//     },
+//     success: function (response) {
+//       console.log(response);
+//       var titles = response["title"];
+//       $(".search_input").empty();
+
+
+//       for(var i=0; i< titles.length; i++){
+//         $(".result").append(`<h1>${titles[0]}</h1>`);
+//       }
+//     }
+//   });
+// });
+document.addEventListener("turbolinks:load",function(){
+  $input = $("[data-behavior='autocomplete']");
+  console.log($input)
+  var options ={
+    getValue: "title",
+    url: function(phrase){
+      return "/search.json?q="+phrase;
+    },
+    categories: [
+    {
+      listLocation: "songs",
+      header: "<strong>Songs</strong>"
+    }
+    ],
+    list: {
+      onChooseEvent: function(){
+        var url = $input.getSelectedItemData().url
+        $input.val("");
+        Turbolinks.visit(url)
+      }
+    }
+  }
+  $input.easyAutocomplete(options)
+})
