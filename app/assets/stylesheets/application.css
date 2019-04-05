@@ -14,17 +14,24 @@
  *= require stylesheets/bootstrap.min.css
  *= require plugins/font-awesome-4.7.0/css/font-awesome.css
  *= require plugins/colorbox/colorbox.css
- */
+ *= require plugins/EasyAutocomplete-1.3.5/easy-autocomplete.css
 
-    .searchbar{
-  display: block;
+ */
+    .easy-autocomplete{
+        height: 0;
+        width: 100% !important;
+    }
+    .eac-category{
+        display: none !important;
+    }
+   .searchbar{
+    display: block;
     height: 100%;
     line-height: 30px;
     font-size: 14px;
     font-weight: 500;
-    color: #FFFFFF;
     padding-left: 20px;
-    padding-right: 20px;
+    padding-right: 50px;
     }
 
     .search_input{
@@ -38,7 +45,7 @@
     transition: width 0.4s linear;
     }
 
-    .searchbar:hover > .search_input{
+    div.searchbar:hover >.easy-autocomplete>.search_input{
     padding: 0 10px;
     width: 450px;
     caret-color:red;
@@ -47,7 +54,7 @@
     border-radius: 16px;
     }
 
-    .searchbar:hover > .search_icon{
+    div.searchbar:hover > div.search_icon{
     background: white;
     color: #e74c3c;
     }

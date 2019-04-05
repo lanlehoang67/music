@@ -19,7 +19,7 @@
       <header class="header trans_400">
         <!-- Logo -->
         <div class="logo">
-          <a href="#"><span>Jinx</span>MP3<img src="../assets/play.png" alt=""></a>
+          <a href="<%= root_path %>"><span>Jinx</span>MP3<img src="../assets/play.png" alt=""></a>
         </div>
         <div class="container">
           <div class="row">
@@ -28,10 +28,7 @@
                 <nav class="main_nav">
                   <ul class="d-flex flex-row align-items-start justify-content-start">
                     <li><a href="<%= root_path %>">Home</a></li>
-                    <li><a href="#">About</a></li>
                     <li><a href="<%= songs_path %>">Songs</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact</a></li>
                   </ul>
                 </nav>
               </div>
@@ -48,10 +45,9 @@
 
 <!-- end modal -->
         <div class="searchbar">
-          <input class="search_input" type="text" name="" placeholder="Search...">
+          <input class="search_input" type="text" name="" placeholder="Search..." data-behavior="autocomplete">
           <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
         </div>
-
           <!-- Social -->
           <div class="social">
             <ul class="d-flex flex-row align-items-start justify-content-start">

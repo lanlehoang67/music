@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  get 'search', controller: :application
   get 'users/show'
   get 'users/edit'
   get 'users/update'
