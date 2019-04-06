@@ -44,6 +44,9 @@
     line-height: 40px;
     transition: width 0.4s linear;
     }
+    ::placeholder{
+        color: white;
+    }
 
     div.searchbar:hover >.easy-autocomplete>.search_input{
     padding: 0 10px;
