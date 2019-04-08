@@ -1,0 +1,11 @@
+class CreatePlayLists < ActiveRecord::Migration[5.2]
+  def change
+    create_table :play_lists do |t|
+      t.references :user, foreign_key: true
+      t.string :name
+      t.string :picture
+
+      t.timestamps
+    end
+  end
+end

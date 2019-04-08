@@ -74,14 +74,17 @@
             </div>
 
 <script language="javascript">
-  function initSinglePlayer(song)
+  function initSinglePlayer(song, song_counter)
   {
 
     var a = "<%= asset_path('touhou.mp3') %>";
  var b =a.slice(0,8);
+
     if($(".jp-jplayer").length)
     {
-      $('#jplayer_<%= song_counter +1 %>').jPlayer({
+      console.log(`#jplayer_${song_counter+1}`);
+      console.log(b+song);
+      $(`#jplayer_${song_counter+1}`).jPlayer({
         ready: function () {
           $(this).jPlayer("setMedia", {
             title:"Better Days",
@@ -92,14 +95,13 @@
         play: function() { // To avoid multiple jPlayers playing together.
           $(this).jPlayer("pauseOthers");
         },
-        swfPath: b+'jquery.jplayer.min.js',
+        swfPath: b,
         supplied: "mp3",
-        cssSelectorAncestor: "#jp_container_<%= song_counter +1%>",
+        cssSelectorAncestor: `#jp_container_${song_counter+1}`,
         wmode: "window",
         globalVolume: false,
         useStateClassSkin: true,
         autoBlur: false,
-        smoothPlayBar: true,
         keyEnabled: true,
         solution: 'html',
         preload: 'metadata',
@@ -111,10 +113,6 @@
       });
     }
 
-console.log('<%= song_counter +1%>')
-
   }
-
-
-        initSinglePlayer('<%= song.url %>');
+   initSinglePlayer('<%= song.url %>',parseInt('<%= song_counter %>'));
 </script>

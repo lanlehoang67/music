@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_04_141415) do
+ActiveRecord::Schema.define(version: 2019_04_06_083500) do
 
   create_table "albums", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "artist_id"
@@ -67,6 +67,24 @@ ActiveRecord::Schema.define(version: 2019_04_04_141415) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_favorite_id"], name: "index_notifications_on_user_favorite_id"
+  end
+
+  create_table "play_list_songs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "play_list_id"
+    t.bigint "song_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["play_list_id"], name: "index_play_list_songs_on_play_list_id"
+    t.index ["song_id"], name: "index_play_list_songs_on_song_id"
+  end
+
+  create_table "play_lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "picture"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_play_lists_on_user_id"
   end
 
   create_table "song_genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -131,6 +149,9 @@ ActiveRecord::Schema.define(version: 2019_04_04_141415) do
   add_foreign_key "comments", "users"
   add_foreign_key "lyrics", "songs"
   add_foreign_key "notifications", "user_favorites"
+  add_foreign_key "play_list_songs", "play_lists"
+  add_foreign_key "play_list_songs", "songs"
+  add_foreign_key "play_lists", "users"
   add_foreign_key "song_genres", "genres"
   add_foreign_key "song_genres", "songs"
   add_foreign_key "songs", "albums"

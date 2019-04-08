@@ -27,6 +27,13 @@
 //= require plugins/colorbox/jquery.colorbox-min.js
 //= require plugins/parallax-js-master/parallax.min.js
 //= require plugins/EasyAutocomplete-1.3.5/jquery.easy-autocomplete.min.js
+//= require plugins/Isotope/isotope.pkgd.min.js
+//= require plugins/progressbar/progressbar.min.js
+//= require plugins/jPlayer/jquery.jplayer.min.js
+//= require plugins/jPlayer/jplayer.playlist.min.js
+//= require episodes.js.erb
+
+
 
 
 // $(document).on("input", ".search_input", function(){
