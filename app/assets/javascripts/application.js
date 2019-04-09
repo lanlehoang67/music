@@ -27,7 +27,8 @@
 //= require plugins/colorbox/jquery.colorbox-min.js
 //= require plugins/parallax-js-master/parallax.min.js
 //= require plugins/EasyAutocomplete-1.3.5/jquery.easy-autocomplete.min.js
-
+//= require episode.js.erb
+//= require plugins/progressbar/progressbar.min.js
 
 // $(document).on("input", ".search_input", function(){
 //   var song = $(this).val();
