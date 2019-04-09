@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_09_012836) do
+ActiveRecord::Schema.define(version: 2019_04_09_170452) do
 
   create_table "albums", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "artist_id"
@@ -50,18 +50,9 @@ ActiveRecord::Schema.define(version: 2019_04_09_012836) do
     t.string "picture"
   end
 
-  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "song_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["song_id"], name: "index_likes_on_song_id"
-    t.index ["user_id"], name: "index_likes_on_user_id"
-  end
-
   create_table "lyrics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.float "start"
-    t.string "text"
+    t.text "text", limit: 4294967295
     t.float "end"
     t.bigint "song_id"
     t.datetime "created_at", null: false
@@ -75,7 +66,9 @@ ActiveRecord::Schema.define(version: 2019_04_09_012836) do
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["user_favorite_id"], name: "index_notifications_on_user_favorite_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "play_list_songs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -156,10 +149,9 @@ ActiveRecord::Schema.define(version: 2019_04_09_012836) do
   add_foreign_key "albums", "artists"
   add_foreign_key "comments", "songs"
   add_foreign_key "comments", "users"
-  add_foreign_key "likes", "songs"
-  add_foreign_key "likes", "users"
   add_foreign_key "lyrics", "songs"
   add_foreign_key "notifications", "user_favorites"
+  add_foreign_key "notifications", "users"
   add_foreign_key "play_list_songs", "play_lists"
   add_foreign_key "play_list_songs", "songs"
   add_foreign_key "play_lists", "users"

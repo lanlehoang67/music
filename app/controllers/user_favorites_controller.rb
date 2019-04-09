@@ -20,6 +20,7 @@ class UserFavoritesController < ApplicationController
 
   def check_created
     if @user.fav @song
+      @user.add_notify @song
       respond_to do |f|
         f.html {redirect_to song_path @song}
         f.js
@@ -32,6 +33,7 @@ class UserFavoritesController < ApplicationController
 
   def check_deleted
     if @user.un_fav @song
+      @user.del_notify @song
       respond_to do |f|
         f.html {redirect_to song_path @song}
         f.js

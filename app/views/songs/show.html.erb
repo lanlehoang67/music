@@ -76,7 +76,7 @@
                 <div class="show_info d-flex flex-row align-items-start justify-content-start">
                   <div class="show_fav d-flex flex-row align-items-center justify-content-start">
                     <div class="check">
-                    <%= check @song, @song.user_favorites.last %>
+                      <%= render partial: "songs/check", locals: {song: @song} %>
                     </div>
                                         <div class="show_fav_count"><%= @song.user_favorites.count %></div>
 

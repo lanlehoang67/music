@@ -14,9 +14,9 @@ module SongsHelper
     "No lyrics yet"
   end
 
-  def check song, user_favorite
-    if user_favorite
-    href = "/songs/"+song.id.to_s+"/user_favorites/"+user_favorite.id.to_s
+  def check song_id, user_favorite_id
+    if user_favorite_id
+    href = "/songs/"+song_id.to_s+"/user_favorites/"+user_favorite_id.to_s
     byebug
      if current_user.user_favorites.empty?
        return('<a data-remote="true" rel="nofollow" data-method="post" href="<%= href %>">
