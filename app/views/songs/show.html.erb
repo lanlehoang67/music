@@ -1,4 +1,6 @@
 
+<%= javascript_include_tag 'songs_show' %>
+
 
       <%= stylesheet_link_tag 'songs_show' %>
 
@@ -73,8 +75,11 @@
 
                 <div class="show_info d-flex flex-row align-items-start justify-content-start">
                   <div class="show_fav d-flex flex-row align-items-center justify-content-start">
-                    <div class="show_fav_icon show_info_icon"><img class="svg" src="../assets/heart.svg" alt=""></div>
-                    <div class="show_fav_count">2371</div>
+                    <div class="check">
+                    <%= check @song, @song.user_favorites.last %>
+                    </div>
+                                        <div class="show_fav_count"><%= @song.user_favorites.count %></div>
+
                   </div>
                   <div class="show_comments">
                     <a href="#">
@@ -203,18 +208,58 @@
       </div>
     </div>
   </div>
-
   <!-- Footer -->
 
-      <%= javascript_include_tag 'songs_show' %>
 
 <script language="javascript">
- $(document).ready(function(){
-  setHeader();
-  initMenu();
-  initFavs();
-  initSvg();
-  initSinglePlayer('<%= @song.url %>');
-  initGallery();
- })
+
+
+ function initSinglePlayer1(song, song_counter)
+  {
+
+    if($(".jp-jplayer").length)
+    {
+      $(`#jplayer_${song_counter+1}`).jPlayer({
+
+        ready: function () {
+          $(this).jPlayer("setMedia", {
+            title:"Better Days",
+              artist:"Bensound",
+              mp3: '/assets/'+song
+          });
+        },
+        play: function() { // To avoid multiple jPlayers playing together.
+          $(this).jPlayer("pauseOthers");
+        },
+        swfPath: '/assets/'+'jquery.jplayer.swf',
+        supplied: "mp3",
+        cssSelectorAncestor: `#jp_container_${song_counter+1}`,
+        wmode: "window",
+        globalVolume: false,
+        useStateClassSkin: true,
+        autoBlur: false,
+        smoothPlayBar: true,
+        keyEnabled: true,
+        solution: 'html',
+        preload: 'metadata',
+        volume: 0.2,
+        muted: false,
+        backgroundColor: '#000000',
+        errorAlerts: false,
+        warningAlerts: false
+      });
+    }
+
+  }
+
+  initSinglePlayer1('<%= @song.url %>',0);
+ // $(document).ready(function(){
+  // setHeader();
+  // initMenu();
+  // initFavs();
+  // initSvg();
+
+
+  // initGallery();
+ // })
 </script>

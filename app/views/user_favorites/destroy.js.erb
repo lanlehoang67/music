@@ -1,0 +1,6 @@
+$(document).ready(function(){
+  $.ajax().done(function(){
+    $('.check').html('<%= check @song, @song.user_favorites.last %>').appendTo('.check')
+    $('.show_fav_count').html('<%= @song.user_favorites.count %>').appendTo('.show_fav_count')
+  })
+})

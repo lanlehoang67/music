@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'user_favorites/new'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'search', controller: :application
   get 'users/show'
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
   resources :songs
   resources :songs, only: [:show] do
     resources :comments
+    resources :user_favorites
   end
 
   root 'static_pages#home'

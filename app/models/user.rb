@@ -7,4 +7,16 @@ class User < ApplicationRecord
   has_many :comments
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def fav target
+    if target.class.name == "Song"
+      self.user_favorites.build(favorite_type_id: target.genres[0].id, favorite_id: target.id).save
+    else
+      self.user_favorites.build(favorite_id: target.id).save
+    end
+  end
+
+  def un_fav target
+    self.user_favorites.find_by(favorite_id: target.id).destroy
+  end
 end

@@ -40,4 +40,8 @@ class SongsController < ApplicationController
   def load_genres
     @genres = Genre.all
   end
+
+  def add_user_favorites
+    UserFavorite.new
+  end
 end
