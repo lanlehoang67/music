@@ -14,14 +14,12 @@
 
 
 ******************************/
-//= require plugins/jPlayer/jquery.jplayer.min.js
 
 	/*
 
 	1. Vars and Inits
 
 	*/
-
 	var ctrl = new ScrollMagic.Controller();
 
 
@@ -161,44 +159,46 @@
 	6. Init Single Player
 
 	*/
+ function initSinglePlayer1(song, song_counter)
+  {
 
-	function initSinglePlayer(song)
-	{
- var a = "<%= asset_path('touhou.mp3') %>";
+    var a = "<%= asset_path('miku.mp3') %>";
  var b =a.slice(0,8);
- console.log(b);
-		if($(".jp-jplayer").length)
-		{
-			$("#jplayer_1").jPlayer({
-				ready: function () {
-					$(this).jPlayer("setMedia", {
-						title:"Better Days",
-							artist:"Bensound",
-							mp3: b+song
-					});
-				},
-				play: function() { // To avoid multiple jPlayers playing together.
-					$(this).jPlayer("pauseOthers");
-				},
-				swfPath: b+'jquery.jplayer.swf',
-				supplied: "mp3",
-				cssSelectorAncestor: "#jp_container_1",
-				wmode: "window",
-				globalVolume: false,
-				useStateClassSkin: true,
-				autoBlur: false,
-				keyEnabled: true,
-				solution: 'html',
-				preload: 'metadata',
-				volume: 0.2,
-				muted: false,
-				backgroundColor: '#000000',
-				errorAlerts: false,
-				warningAlerts: false,
-				solution: 'flash, html'
-			});
-		}
-	}
+
+    if($(".jp-jplayer").length)
+    {
+      $(`#jplayer_${song_counter+1}`).jPlayer({
+
+        ready: function () {
+          $(this).jPlayer("setMedia", {
+            title:"Better Days",
+              artist:"Bensound",
+              mp3: b+song
+          });
+        },
+        play: function() { // To avoid multiple jPlayers playing together.
+          $(this).jPlayer("pauseOthers");
+        },
+        swfPath: b+'jquery.jplayer.swf',
+        supplied: "mp3",
+        cssSelectorAncestor: `#jp_container_${song_counter+1}`,
+        wmode: "window",
+        globalVolume: false,
+        useStateClassSkin: true,
+        autoBlur: false,
+        smoothPlayBar: true,
+        keyEnabled: true,
+        solution: 'html',
+        preload: 'metadata',
+        volume: 0.2,
+        muted: false,
+        backgroundColor: '#000000',
+        errorAlerts: false,
+        warningAlerts: false
+      });
+    }
+
+  }
 	/*
 
 	7. Init Gallery

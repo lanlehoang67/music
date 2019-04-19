@@ -6,7 +6,6 @@
     <%= csp_meta_tag %>
 
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -29,6 +28,7 @@
                   <ul class="d-flex flex-row align-items-start justify-content-start">
                     <li><a href="<%= root_path %>">Home</a></li>
                     <li><a href="<%= songs_path %>">Songs</a></li>
+                    <li><a href="<%= play_lists_path %>">Playlists</a></li>
                   </ul>
                 </nav>
               </div>

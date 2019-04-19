@@ -164,34 +164,52 @@
 
 	*/
 
-    function initIsotope()
-    {
-    	if($('.episode').length)
-    	{
-    		var grid = $('.episodes_container').isotope({
-	  			itemSelector: '.episode',
-	  			percentPosition: true,
-	  			masonry:
-	  			{
-				    horizontalOrder: true
-			  	}
-	        });
-
-	        // Filtering
-	        $('.item_filter_btn').on('click', function()
-	        {
-		        var filterValue = $(this).attr('data-filter');
-				grid.isotope({ filter: filterValue });
-	        });
-    	}
-    }
 
 	/*
 
 	7. Init Single Player
 
 	*/
+function initSinglePlayer(song, song_counter)
+  {
 
+    var a = "<%= asset_path('touhou.mp3') %>";
+ var b =a.slice(0,8);
+
+    if($(".jp-jplayer").length)
+    {
+      console.log(`#jplayer_${song_counter+1}`);
+      console.log(b+song);
+      $(`#jplayer_${song_counter+1}`).jPlayer({
+        ready: function () {
+          $(this).jPlayer("setMedia", {
+            title:"Better Days",
+              artist:"Bensound",
+              mp3: b+song
+          });
+        },
+        play: function() { // To avoid multiple jPlayers playing together.
+          $(this).jPlayer("pauseOthers");
+        },
+        swfPath: b,
+        supplied: "mp3",
+        cssSelectorAncestor: `#jp_container_${song_counter+1}`,
+        wmode: "window",
+        globalVolume: false,
+        useStateClassSkin: true,
+        autoBlur: false,
+        keyEnabled: true,
+        solution: 'html',
+        preload: 'metadata',
+        volume: 0.2,
+        muted: false,
+        backgroundColor: '#000000',
+        errorAlerts: false,
+        warningAlerts: false
+      });
+    }
+
+  }
 
 	/*
 

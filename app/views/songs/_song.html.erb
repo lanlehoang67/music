@@ -25,6 +25,12 @@
                       </div>
                     </a>
                   </div>
+                  <div class="show_comments show_btn_playlist">
+                    <a data-toggle="modal" data-target="#exampleModalCenter">
+
+                      <i class="fa fa-plus"></i>  Add to playlist
+                    </a>
+                  </div>
                 </div>
                 <!-- Player -->
                 <div class="single_player_container">
@@ -72,16 +78,69 @@
                 </div>
               </div>
             </div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add <%= song.title %> to playlist:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="position: relative;">
 
+
+  <select class="selects">
+     <% if current_user %>
+
+              <%= render partial: "songs/select", collection: current_user.play_lists, as: :play_list %>
+              <option>CC</option>
+     <% end %>
+
+
+  </select>
+<br/>
+     <input type="text" name="" class="playlist_add">
+     <button onclick=createPlayList() class="btn btn-primary">Create</button>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button onclick=addSong() type="button" class="btn btn-primary">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script language="javascript">
-  function initSinglePlayer(song)
+ function addSong(){
+    $.ajax({
+        url : "/check_rq",
+        type : "post",
+        data : {playlist: $("select option:selected").val(), song: '<%= song.title %>'}
+    });
+  };
+  function createPlayList(){
+    $.ajax({
+      url : "/play_lists",
+      type: "post",
+      data: {name: $('.playlist_add').val()},
+      success: function(data){
+        $('.selects').append('<option>'+$('.playlist_add').val()+'</option>');
+        $('.playlist_add').val('');
+      }
+    })
+  }
+  function initSinglePlayer(song, song_counter)
   {
 
     var a = "<%= asset_path('touhou.mp3') %>";
  var b =a.slice(0,8);
+
     if($(".jp-jplayer").length)
     {
-      $('#jplayer_<%= song_counter +1 %>').jPlayer({
+      console.log(`#jplayer_${song_counter+1}`);
+      console.log(b+song);
+      $(`#jplayer_${song_counter+1}`).jPlayer({
         ready: function () {
           $(this).jPlayer("setMedia", {
             title:"Better Days",
@@ -92,14 +151,13 @@
         play: function() { // To avoid multiple jPlayers playing together.
           $(this).jPlayer("pauseOthers");
         },
-        swfPath: b+'jquery.jplayer.min.js',
+        swfPath: b,
         supplied: "mp3",
-        cssSelectorAncestor: "#jp_container_<%= song_counter +1%>",
+        cssSelectorAncestor: `#jp_container_${song_counter+1}`,
         wmode: "window",
         globalVolume: false,
         useStateClassSkin: true,
         autoBlur: false,
-        smoothPlayBar: true,
         keyEnabled: true,
         solution: 'html',
         preload: 'metadata',
@@ -111,10 +169,8 @@
       });
     }
 
-console.log('<%= song_counter +1%>')
-
   }
+   initSinglePlayer('<%= song.url %>',parseInt('<%= song_counter %>'));
 
 
-        initSinglePlayer('<%= song.url %>');
 </script>
