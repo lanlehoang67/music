@@ -34,4 +34,8 @@ module SongsHelper
 </a>').html_safe
    end
   end
+
+  def find_playlist name
+    @playlist_add = PlayList.find_by name: name
+  end
 end

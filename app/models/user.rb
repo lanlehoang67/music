@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthabl
   has_many :user_favorites
   has_many :notifications
+  has_many :play_lists
   has_many :songs, through: :user_favorites
   has_many :upload_songs, class_name: Song.name, foreign_key: "user_id"
   has_many :comments

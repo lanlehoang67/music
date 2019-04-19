@@ -16,6 +16,9 @@ class SongsController < ApplicationController
     end
   end
 
+  def create
+  end
+
   private
 
   def load_song
