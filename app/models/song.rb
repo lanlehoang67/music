@@ -11,7 +11,8 @@ class Song < ApplicationRecord
   delegate :name, to: :artist, prefix: true
   scope :top, ->{all.order(views: :desc).limit(10)}
   scope :recent, ->{all.order(created_at: :desc).limit(10)}
-  scope :find_by_genre, ->(genre_to_find){joins(:genres).where("genres.name = ?",genre_to_find)}
+  scope :find_by_genre, ->(genre_to_find){joins(:genres).where("genres.title = ?",genre_to_find)}
+  scope :find_by_country, ->(country_to_find){where("songs.country = ?",country_to_find)}
   scope :trending, ->{all.order(views: :desc).limit(10)}
   mount_uploader :picture, PictureUploader
   mount_uploader :url, PictureUploader

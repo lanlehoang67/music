@@ -13,7 +13,7 @@
                                 <hr>
                                 <div class="row">
                                     search artist
-                                    
+
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -96,17 +96,17 @@
                         <div class="tab-content" id="songsListContent">
                             <div class="tab-pane fade show active" id="recent" role="tabpanel" aria-labelledby="recent-tab">
                                 <div class="custom-list">
-                                    itemhtml
+                                    <%= render partial: "item", collection: @recent_songs %>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="trending" role="tabpanel" aria-labelledby="trending-tab">
                                 <div class="custom-list">
-                                    
+                                    <%= render partial: "item", collection: @trending_songs %>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="international" role="tabpanel" aria-labelledby="international-tab">
                                 <div class="custom-list">
-                                   
+
                                 </div>
                             </div>
                         </div>
@@ -122,7 +122,7 @@
                         <hr>
                     </div>
                     <div class="carousel-item-5 arrow-pos-3">
-                        song
+                        <%= render partial: "song", collection: @top_songs %>
                         </div>
                 </div>
                 <div class="section">
@@ -135,7 +135,7 @@
                         <hr>
                     </div>
                     <div class="carousel-item-6 arrow-pos-2">
-                        song
+                        <%= render partial: "featured_artist", collection: @featured_artists %>
                     </div>
                 </div>
                 <div class="section">
@@ -148,34 +148,33 @@
                         <hr>
                     </div>
                     <div class="carousel-item-4 arrow-pos-1">
-                        playlist
-                     
+                        <%= render partial: "playlist", collection: @playlists %>
                     </div>
                 </div>
                 <div class="section">
                     <div class="heading">
                         <div class="d-flex flex-wrap align-items-end">
                             <div class="flex-grow-1">
-                                <h4>Retro Classic</h4>
-                                <p>Old is gold</p>
+                                <h4>Chinese</h4>
+                                <p>Ancient chinese songs</p>
                             </div><a href="songs.html" class="btn btn-sm btn-pill btn-air btn-primary">View All</a></div>
                         <hr>
                     </div>
                     <div class="carousel-item-6 arrow-pos-3">
-                        retro classic - song
+                        <%= render partial: "playlist", collection: @china_songs %>
                     </div>
                 </div>
                 <div class="section">
                     <div class="heading">
                         <div class="d-flex flex-wrap align-items-end">
                             <div class="flex-grow-1">
-                                <h4>Radio</h4>
-                                <p>Listen live now</p>
+                                <h4>Japanese</h4>
+                                <p>Chilling and beautiful japanese songs</p>
                             </div><a href="stations.html" class="btn btn-sm btn-pill btn-air btn-primary">View All</a></div>
                         <hr>
                     </div>
                     <div class="carousel-item-6 arrow-pos-2">
-                        playlist
+                        <%= render partial: "playlist", collection: @japan_songs %>
                     </div>
                 </div>
                 <div class="section">
@@ -188,7 +187,7 @@
                         <hr>
                     </div>
                     <div class="carousel-item-6 arrow-pos-1">
-                        playlist
+                        <%= render partial: "genre", collection: @genres %>
                     </div>
                 </div>
             </div>
