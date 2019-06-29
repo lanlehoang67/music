@@ -6,7 +6,13 @@ class Song < ApplicationRecord
   has_many :comments
 	belongs_to :artist
   belongs_to :user
-  belongs_to :play_list
+  belongs_to :play_list, optional: true
+  belongs_to :album
   delegate :name, to: :artist, prefix: true
-  scope :high_views, ->{all.order(views: :desc).limit(3)}
+  scope :top, ->{all.order(views: :desc).limit(10)}
+  scope :recent, ->{all.order(created_at: :desc).limit(10)}
+  scope :find_by_genre, ->(genre_to_find){joins(:genres).where("genres.name = ?",genre_to_find)}
+  scope :trending, ->{all.order(views: :desc).limit(10)}
+  mount_uploader :picture, PictureUploader
+  mount_uploader :url, PictureUploader
 end

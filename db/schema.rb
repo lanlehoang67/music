@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_09_170452) do
+ActiveRecord::Schema.define(version: 2019_06_29_132413) do
 
   create_table "albums", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "artist_id"
@@ -111,6 +111,10 @@ ActiveRecord::Schema.define(version: 2019_04_09_170452) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.string "picture"
+    t.string "url_file_name"
+    t.string "url_content_type"
+    t.bigint "url_file_size"
+    t.datetime "url_updated_at"
     t.index ["album_id"], name: "index_songs_on_album_id"
     t.index ["artist_id"], name: "index_songs_on_artist_id"
     t.index ["user_id"], name: "index_songs_on_user_id"

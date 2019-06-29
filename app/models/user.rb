@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :comments
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+  mount_uploader :picture, PictureUploader
   def fav target
     if target.class.name == "Song"
       self.user_favorites.build(favorite_type_id: target.genres[0].id, favorite_id: target.id).save

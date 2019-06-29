@@ -1,35 +1,17 @@
-<div class="col-lg-4">
-              <div class="show">
-                <div class="show_image">
-                  <a href="<%= song_path song %>">
-                  <img height="350" width="350" src="../assets/<%= song.picture %>" alt="https://unsplash.com/@icons8">
-                  </a>
-                  <div class="show_tags">
-                    <div class="tags">
-                      <ul class="d-flex flex-row align-items-start justify-content-start">
-                        <li><a href="#"><%= load_genres song %></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="show_play_icon"><img src="../assets/play.svg" alt="https://www.flaticon.com/authors/cole-bemis"></div>
-                </div>
-                <div class="show_content">
-                  <div class="show_date"><a href="#">24 September, 2018</a></div>
-                  <div class="show_title"><a href="episode.html"><%= song.title %></a></div>
-                  <div class="show_info d-flex flex-row align-items-start justify-content-start">
-                    <div class="show_fav d-flex flex-row align-items-center justify-content-start">
-                      <div class="show_fav_icon show_info_icon"><img class="svg" src="../assets/heart.svg" alt=""></div>
-                      <div class="show_fav_count">2371</div>
-                    </div>
-                    <div class="show_comments">
-                      <a href="#">
-                        <div class="d-flex flex-row align-items-center justify-content-start">
-                          <div class="show_comments_icon show_info_icon"><img class="svg" src="../assets/speech-bubble.svg" alt=""></div>
-                          <div class="show_comments_count"><%= song.comments.count %> Comments</div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+         <div class="custom-card">
+                            <div class="custom-card--img">
+                                <div class="custom-card--info">
+                                    <ul class="custom-card--labels d-flex">
+                                        <li><span class="badge badge-pill badge-warning"><i class="la la-star"></i></span></li>
+                                    </ul>
+                                    <div class="dropdown dropdown-icon"><a href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ion-md-more"></i></a>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link favorite"><i class="la la-heart-o"></i></a></li>
+                                            <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link"><i class="la la-plus"></i></a></li>
+                                            <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link"><i class="la la-download"></i></a></li>
+                                            <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link"><i class="la la-share-alt"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a href="javascript:void(0);" data-audio='{"name": "I Love You Mummy", "artist": "Arebica Luna", "album": "Mummy", "url": "<%= song.url %>", "cover_art_url": "<%= song.picture %>"}'><img src=".<%= song.picture %>" alt="<%= song.title %>" class="card-img--radius-lg"></a>
+                            </div><a href="song-details.html" class="custom-card--link mt-2"><h6><%= song.title %></h6><p><%= song.artist.name %></p></a></div>

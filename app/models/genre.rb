@@ -1,4 +1,5 @@
 class Genre < ApplicationRecord
-	has_many :song_genres
+  has_many :song_genres
   has_many :songs, through: :song_genres
+  mount_uploader :picture, PictureUploader
 end

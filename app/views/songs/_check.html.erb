@@ -1,9 +1,0 @@
-<% if song.user_favorites.empty? %>
-  <%= link_to song_user_favorites_path(song), method: :post, remote: true do %>
-    <div class="show_fav_icon show_info_icon"><img class="svg" src="../assets/heart.svg" alt=""></div>
-  <% end %>
-<% else %>
-  <%= link_to song_user_favorite_path(song_id: song.id, id: song.user_favorites.last.id), method: :delete, remote: true do %>
-    <div class="show_fav_icon show_info_icon"><img class="svg" src="../assets/heart.svg" alt=""></div>
-  <% end %>
-<% end %>
