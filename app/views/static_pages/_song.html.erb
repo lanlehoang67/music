@@ -13,5 +13,5 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <a href="javascript:void(0);" data-audio='{"name": "I Love You Mummy", "artist": "Arebica Luna", "album": "Mummy", "url": "<%= song.url %>", "cover_art_url": "<%= song.picture %>"}'><img src=".<%= song.picture %>" alt="<%= song.title %>" class="card-img--radius-lg"></a>
+                                <a href="javascript:void(0);" data-audio='{"name": "<%= song.title %>", "artist": "<%= song.artist.name %>", "album": "Mummy", "url": "<%= song.url %>", "cover_art_url": "<%= song.picture %>"}'><img src=".<%= song.picture %>" alt="<%= song.title %>" class="card-img--radius-lg"></a>
                             </div><a href="song-details.html" class="custom-card--link mt-2"><h6><%= song.title %></h6><p><%= song.artist.name %></p></a></div>

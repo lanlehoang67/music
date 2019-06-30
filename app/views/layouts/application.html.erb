@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
       <%= stylesheet_link_tag    'application', media: 'all' %>
+          <link href="../assets/vendors.bundle.css" rel="stylesheet" type="text/css">
+    <link href="../assets/styles.bundle.css" rel="stylesheet" type="text/css">
   </head>
 
   <body>
@@ -52,8 +54,10 @@
       <!-- Home -->
     <%= yield %>
       <!-- Latest Episodes -->
-    
+
       <%= javascript_include_tag 'application' %>
+        <script src="../assets/vendors.bundle.js"></script>
+    <script src="../assets/scripts.bundle.js"></script>
 
   </body>
 </html>
