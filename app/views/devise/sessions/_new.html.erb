@@ -1,0 +1,25 @@
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginTitle" aria-hidden="true">
+        <div class="modal-dialog" id="true-modal" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0 pb-0">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <h6 class="modal-title text-center mb-3" id="loginTitle">Login For Awesome Listing Experience</h6>
+                <div class="modal-body">
+                        <%= form_for(resource, as: resource_name, url: user_session_path, method: :post) do |f| %>
+                        <div class="social-login"><a href="javascript:void(0);" class="w-100 btn btn-social btn-facebook btn-default-air"><span class="btn-content"><i class="ion-logo-facebook"></i> <span class="pl-2">Login With Facebook</span> </span></a><a href="javascript:void(0);" class="w-100 mt-3 btn btn-social btn-google btn-default-air"><span class="btn-content"><i class="ion-logo-google"></i> <span class="pl-2">Login With Google</span></span></a></div>
+                        <div class="form-group">
+                           <%= f.email_field :email, :autofocus => true, :placeholder => "Email", :class => "form-control" %>
+                        </div>
+                        <div class="form-group">
+                           <%= f.password_field :password, :placeholder => "Password", :class => "form-control" %>
+                        </div>
+                        <button type="submit" class="btn btn-block btn-bold btn-air btn-info">Login</button>
+                        <button type="button" class="btn btn-block btn-bold btn-air btn-info" data-toggle="modal" href="#register">Register</button>
+
+                         <% end %>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

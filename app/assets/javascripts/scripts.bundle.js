@@ -294,7 +294,7 @@ $(function() {
         e = $(".sidebar-backdrop");
     $(document).ready(AppConfig.init)
 }), $(window).on("load", function() {
-    $("#loading").fadeOut(1e3), $("#login").modal("show")
+    $("#loading").fadeOut(1e3)
 }), $("#wrapper").on("scroll", function() {
     $("#header").toggleClass("scrolled", $(this).scrollTop() > 80)
 });
@@ -310,7 +310,7 @@ $(function() {
                         name: "I Love You Mummy",
                         artist: "Arebica Luna",
                         album: "Mummy",
-                        url: "em_cua_ngay_hom_qua.mp3",
+                        url: "touhou.mp3",
                         cover_art_url: "../assets/cover/small/1.jpg"
                     }],
                     playlists: {
@@ -319,7 +319,7 @@ $(function() {
                                 name: "I Love You Mummy",
                                 artist: "Arebica Luna",
                                 album: "Mummy",
-                                url: "em_cua_ngay_hom_qua.mp3",
+                                url: "touhou.mp3",
                                 cover_art_url: "../assets/images/cover/small/1.jpg"
                             }, {
                                 name: "Shack Your Butty",

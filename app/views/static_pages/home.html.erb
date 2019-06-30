@@ -1,52 +1,4 @@
-    <link href="../assets/vendors.bundle.css" rel="stylesheet" type="text/css">
-    <link href="../assets/styles.bundle.css" rel="stylesheet" type="text/css">
-        <main id="pageWrapper">
-            <header id="header" class="bg-primary">
-                <div class="d-flex align-items-center">
-                    <button type="button" class="btn toggle-menu mr-3" id="openSidebar"><span></span> <span></span> <span></span></button>
-                    <form action="#" id="searchForm">
-                        <button type="button" class="btn ion-ios-search"></button>
-                        <input type="text" placeholder="Search..." class="form-control">
-                        <div class="search-card" data-scrollable="true">
-                            <div class="mb-3">
-                                <div class="d-flex"><span class="text-uppercase mr-auto font-weight-bold text-dark">Artists</span> <a href="artists.html">View All</a></div>
-                                <hr>
-                                <div class="row">
-                                    search artist
 
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="d-flex"><span class="text-uppercase mr-auto font-weight-bold text-dark">Track</span> <a href="songs.html">View All</a></div>
-                                <hr>
-                                <div class="row">
-                                  search song
-
-                                </div>
-                            </div>
-                            <div>
-                                <div class="d-flex"><span class="text-uppercase mr-auto font-weight-bold text-dark">Albums</span> <a href="songs.html">View All</a></div>
-                                <hr>
-                                <div class="row">
-                                    search album
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <ul class="header-options d-flex align-items-center">
-                        <li><a href="javascript:void(0);" data-toggle="modal" data-target="#lang" class="language"><span>Language</span> <img src="../assets/svg/translate.svg" alt=""></a></li>
-                        <li class="dropdown fade-in">
-                            <a href="javascript:void(0);" class="d-flex align-items-center py-2" role="button" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <div class="avatar avatar-sm avatar-circle"><img src="../assets/users/thumb.jpg" alt="user"></div><span class="pl-2">Halo Admin</span></a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu"><a class="dropdown-item" href="#"><i class="ion-md-contact"></i> <span>Profile</span></a> <a class="dropdown-item" href="#"><i class="ion-md-radio-button-off"></i> <span>Your Plan</span></a> <a class="dropdown-item" href="#"><i class="ion-md-settings"></i> <span>Settings</span></a>
-                                <div class="dropdown-divider"></div>
-                                <div class="px-4 py-2"><a href="#" class="btn btn-sm btn-air btn-pill btn-danger">Logout</a></div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </header>
-            <div class="banner bg-home"></div>
             <div class="main-container">
                 <div class="section">
                     <div class="heading">
@@ -94,17 +46,17 @@
                             <li class="nav-item"><a class="nav-link" id="international-tab" data-toggle="tab" href="#international" role="tab" aria-controls="international" aria-selected="false">International</a></li>
                         </ul>
                         <div class="tab-content" id="songsListContent">
-                            <div class="tab-pane fade show active" id="recent" role="tabpanel" aria-labelledby="recent-tab">
+                            <div class="tab-pane show active" id="recent" role="tabpanel" aria-labelledby="recent-tab">
                                 <div class="custom-list">
                                     <%= render partial: "item", collection: @recent_songs %>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="trending" role="tabpanel" aria-labelledby="trending-tab">
+                            <div class="tab-pane" id="trending" role="tabpanel" aria-labelledby="trending-tab">
                                 <div class="custom-list">
                                     <%= render partial: "item", collection: @trending_songs %>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="international" role="tabpanel" aria-labelledby="international-tab">
+                            <div class="tab-pane" id="international" role="tabpanel" aria-labelledby="international-tab">
                                 <div class="custom-list">
 
                                 </div>
@@ -191,103 +143,3 @@
                     </div>
                 </div>
             </div>
-            <footer id="footer" class="bg-img">
-                <div class="footer-content"><a href="#" class="email">info@listenapp.com</a>
-                    <div class="platform-btn-inline"><a href="#" class="btn btn-dark btn-air platform-btn"><i class="ion-logo-android"></i><div class="platform-btn-info"><span class="platform-desc">Available on</span> <span class="platform-name">Android</span></div></a><a href="#" class="btn btn-danger btn-air platform-btn"><i class="ion-logo-apple"></i><div class="platform-btn-info"><span class="platform-desc">Available on</span> <span class="platform-name">App Store</span></div></a></div>
-                </div>
-            </footer>
-            <div id="audioPlayer" class="player-primary">
-                <div id="progress-container">
-                    <input type="range" class="amplitude-song-slider">
-                    <progress class="audio-progress audio-progress--played amplitude-song-played-progress"></progress>
-                    <progress class="audio-progress audio-progress--buffered amplitude-buffered-progress" value="0"></progress>
-                </div>
-                <div class="audio">
-                    <div class="song-image"><img data-amplitude-song-info="cover_art_url" src="../assets/cover/small/1.jpg" alt=""></div>
-                    <div class="song-info pl-3"><span class="song-name d-inline-block text-truncate" data-amplitude-song-info="name"></span> <span class="song-artists d-block text-muted" data-amplitude-song-info="artist"></span></div>
-                </div>
-                <div class="audio-controls">
-                    <div class="audio-controls--left d-flex mr-auto">
-                        <button class="btn btn-icon-only amplitude-repeat"><i class="ion-md-sync"></i></button>
-                    </div>
-                    <div class="audio-controls--main d-flex">
-                        <button class="btn btn-icon-only amplitude-prev"><i class="ion-md-skip-backward"></i></button>
-                        <button class="btn btn-air btn-pill btn-default btn-icon-only amplitude-play-pause"><i class="ion-md-play"></i> <i class="ion-md-pause"></i></button>
-                        <button class="btn btn-icon-only amplitude-next"><i class="ion-md-skip-forward"></i></button>
-                    </div>
-                    <div class="audio-controls--right d-flex ml-auto">
-                        <button class="btn btn-icon-only amplitude-shuffle amplitude-shuffle-off"><i class="ion-md-shuffle"></i></button>
-                    </div>
-                </div>
-                <div class="audio-info d-flex align-items-center pr-4"><span class="mr-4"><span class="amplitude-current-minutes"></span>:<span class="amplitude-current-seconds"></span> / <span class="amplitude-duration-minutes"></span>:<span class="amplitude-duration-seconds"></span></span>
-                    <div class="audio-volume dropdown">
-                        <button class="btn btn-icon-only" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ion-md-volume-low"></i></button>
-                        <div class="dropdown-menu dropdown-menu-right volume-dropdown-menu">
-                            <input type="range" class="amplitude-volume-slider" value="100">
-                        </div>
-                    </div>
-                    <div class="dropleft">
-                        <button class="btn btn-icon-only" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="la la-ellipsis-v"></i></button>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link"><i class="la la-heart-o"></i> <span>Favorite</span></a></li>
-                            <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link"><i class="la la-plus"></i> <span>Add to Playlist</span></a></li>
-                            <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link"><i class="la la-download"></i> <span>Download</span></a></li>
-                            <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link"><i class="la la-share-alt"></i> <span>Share</span></a></li>
-                            <li class="dropdown-item"><a href="song-details.html" class="dropdown-link"><i class="la la-info-circle"></i> <span>Song Info</span></a></li>
-                        </ul>
-                    </div>
-                    <button class="btn btn-icon-only" id="playList"><i class="ion-md-musical-note"></i></button>
-                </div>
-            </div>
-        </main>
-    </div>
-    <div class="modal fade" id="lang" tabindex="-1" role="dialog" aria-labelledby="langTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div>
-                        <h5 class="modal-title mb-1" id="langTitle">Language</h5>
-                        <p class="text-muted">Please select the language(s) of the music you listen to.</p>
-                    </div>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    <ul class="list-group row">
-                        <li class="list-group-item border-0 col-sm-6">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="ch16">
-                                <label class="custom-control-label" for="ch16">Vietnamese</label>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="modal-footer text-center d-block">
-                    <button type="button" class="btn btn-primary btn-pill" id="langApply">Apply</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header border-bottom-0 pb-0">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <h6 class="modal-title text-center mb-3" id="loginTitle">Login For Awesome Listing Experience</h6>
-                <div class="modal-body">
-                    <form action="#" class="mx-4 pb-5">
-                        <div class="social-login"><a href="javascript:void(0);" class="w-100 btn btn-social btn-facebook btn-default-air"><span class="btn-content"><i class="ion-logo-facebook"></i> <span class="pl-2">Login With Facebook</span> </span></a><a href="javascript:void(0);" class="w-100 mt-3 btn btn-social btn-google btn-default-air"><span class="btn-content"><i class="ion-logo-google"></i> <span class="pl-2">Login With Google</span></span></a></div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Email or mobile number">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Password">
-                        </div>
-                        <button type="button" class="btn btn-block btn-bold btn-air btn-info">Login</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="backdrop header-backdrop"></div>
-    <div class="backdrop sidebar-backdrop"></div>

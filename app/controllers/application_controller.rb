@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   # rescue_from ::ActionController::RoutingError, with: :error_occurred
   # # rescue_from ::Exception, with: :error_occurred
 
+
   # protected
 
   # def record_not_found(exception)
