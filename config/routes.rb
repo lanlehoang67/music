@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get 'albums/show'
+  resources :songs, except: :show
+  resources :songs, only: :show do
+    resources :comments
+  end
   resources :artists
   resources :genres
   resources :albums

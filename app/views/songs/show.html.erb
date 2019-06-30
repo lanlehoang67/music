@@ -1,0 +1,102 @@
+   <script type="text/javascript">
+  $(document).ready(function(){
+    var textarea = $("#lyric");
+    textarea.hide();
+    $(".toggle-lyric").click(function(){
+      if(textarea.css("display")=='none'){
+              textarea.show();
+      }
+      else{
+            textarea.hide();
+
+      }
+    })
+
+  })
+  function setLyric(){
+    var textarea = $("#lyric");
+     if (!$.trim(textarea.val())) {
+      var lines = textarea.val().split('\n');
+      console.log(lines)
+for(var i = 0;i < lines.length;i++){
+    var el = "<p>" + lines[i] + "</p>"
+    $("#lyric").append(el)
+    }
+
+      }
+    }
+</script>
+
+            <div class="main-container">
+                <div class="row section text-center text-md-left">
+                    <div class="col-xl-3 col-lg-4 col-sm-5"><img src="<%= @song.picture %>" alt="" class="card-img--radius-lg"></div>
+                    <div class="col-xl-9 col-lg-8 col-sm-7">
+                        <div class="row pt-4">
+                            <div class="col-xl-8 col-lg-6">
+                                <h5><%= @song.title %></h5>
+                                <p><%= @song.artist.name %></p>
+                                <div class="text-warning stars"><i class="la la-star"></i> <i class="la la-star"></i> <i class="la la-star"></i> <i class="la la-star"></i> <i class="la la-star-half-empty"></i></div><span class="badge badge-pill badge-warning mt-3">Premium</span>
+                                <div class="mt-4"><a href="javascript:void(0);" class="btn btn-pill btn-air btn-bold btn-danger" data-audio='{"name": "<%= @song.title %>", "artist": "<%= @song.artist.name %>", "album": "<%= @song.album %>", "url": "<%= @song.url %>", "cover_art_url": "<%= @song.picture %>"}'>Play</a></div>
+                            </div>
+                            <div class="col-xl-4 col-lg-6">
+                                <div class="pt-3 pt-lg-0 text-lg-right">
+                                    <button class="btn btn-pill btn-air btn-danger btn-icon-only"><i class="la la-heart-o"></i></button>
+                                    <button class="btn btn-pill btn-air btn-warning btn-icon-only"><i class="la la-plus"></i></button>
+                                    <button class="btn btn-pill btn-air btn-success btn-icon-only"><i class="la la-download"></i></button>
+                                    <button class="btn btn-pill btn-air btn-brand btn-icon-only"><i class="la la-share-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <ul class="nav nav-tabs line-tabs line-tabs-primary text-uppercase mb-4" id="songDetails" role="tablist">
+                        <li class="nav-item"><a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a></li>
+                        <li class="nav-item"><a class="nav-link" id="lyrics-tab" data-toggle="tab" href="#lyrics" role="tab" aria-controls="lyrics" aria-selected="false">Lyrics</a></li>
+                    </ul>
+                    <div class="tab-content" id="songDetailsContent">
+                        <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item pl-0 border-0">Compose by: <span class="font-weight-bold"><%= @song.artist.name %></span></li>
+                                <li class="list-group-item pl-0 border-0">Lyrics by: <span class="font-weight-bold"><%= @song.artist.name %></span></li>
+                                <li class="list-group-item pl-0 border-0">Music Director: <span class="font-weight-bold"></span></li>
+                                <li class="list-group-item pl-0 border-0">Downloads: <span class="font-weight-bold">10,234,014</span></li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade show" id="lyrics" role="tabpanel" aria-labelledby="lyrics-tab">
+                            <% if @song.lyric.present? %>
+                              <%= @song.lyric %>
+                            <% else %>
+                              <p><button class="btn btn-info toggle-lyric">Edit</button></p>
+                              <textarea name="content" id="lyric" cols="50" rows="10"></textarea>
+                              <p><button class="btn btn-info" onclick="setLyric()">Submit lyric</button></p>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="heading">
+                        <div class="d-flex flex-wrap align-items-end">
+                            <div class="flex-grow-1">
+                                <h4>Album Songs</h4></div><a href="songs.html" class="btn btn-sm btn-pill btn-air btn-primary">View Album</a></div>
+                        <hr>
+                    </div>
+                    <div class="carousel-item-5 arrow-pos-3">
+                        <%= render partial: "album_song", collection: @album_songs %>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="mb-4">
+                      <%= form_for @comment, url: song_comments_path(@song), method: :post do %>
+                        <div class="d-flex mb-3"><span>Rate:</span>
+                            <div class="text-warning stars pl-2"><i class="la la-star"></i> <i class="la la-star"></i> <i class="la la-star"></i> <i class="la la-star"></i> <i class="la la-star"></i></div>
+                        </div>
+                        <textarea name="comment" id="comment" cols="30" rows="5" class="form-control"></textarea>
+                        <div class="text-right mt-2">
+                            <button type="submit" class="btn btn-info btn-comment">Comment</button>
+                        </div>
+                      <% end %>
+                    </div>
+                    <%= render partial: "songs/comment", collection: @comments %>
+                </div>
+            </div>

@@ -13,9 +13,11 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
 
       <%= stylesheet_link_tag    'application', media: 'all' %>
-      
+
           <link href="../assets/vendors.bundle.css" rel="stylesheet" type="text/css">
     <link href="../assets/styles.bundle.css" rel="stylesheet" type="text/css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 
   <body>
@@ -90,7 +92,7 @@
                         <li class="dropdown fade-in">
                              <% if user_signed_in? %>
                             <a href="javascript:void(0);" class="d-flex align-items-center py-2" role="button" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                               
+
                                 <div class="avatar avatar-sm avatar-circle"><img src="../assets/users/thumb.jpg" alt="user"></div><span class="pl-2">Hello <%= current_user.email %></span></a>
                             <% end %>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu"><a class="dropdown-item" href="#"><i class="ion-md-contact"></i> <span>Profile</span></a> <a class="dropdown-item" href="#"><i class="ion-md-radio-button-off"></i> <span>Your Plan</span></a> <a class="dropdown-item" href="#"><i class="ion-md-settings"></i> <span>Settings</span></a>
@@ -187,8 +189,7 @@
     <div class="backdrop sidebar-backdrop"></div>
 
       <!-- Latest Episodes -->
-       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
       <%= javascript_include_tag 'application' %>
 
         <script src="../assets/vendors.bundle.js"></script>
@@ -212,7 +213,7 @@
         if(window.location.pathname === "/"){
            $("#login").modal("show")
         }
-        
+
     </script>
   </body>
 </html>
