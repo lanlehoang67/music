@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+
   resources :songs, except: :show
   resources :songs, only: :show do
     resources :comments
+  end
+  resources :playlists
+  resources :playlists,only: :show do
+      resources :playlist_songs
   end
   resources :artists
   resources :genres

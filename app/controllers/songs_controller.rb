@@ -2,7 +2,7 @@ class SongsController < ApplicationController
   before_action :load_song, :load_comments, only: :show
 
   def show
-    @comment = @song.comments.new
+    @comment = Comment.new
   end
 
   private
@@ -12,7 +12,7 @@ class SongsController < ApplicationController
   end
 
   def load_comments
-    @comments = @song.comments
+    @comments = @song.comments.newest.page params[:page]
   end
 
   def load_album_songs

@@ -1,0 +1,19 @@
+<div class="modal fade" id="create-playlist" tabindex="-1" role="dialog" aria-labelledby="loginTitle" aria-hidden="true">
+        <div class="modal-dialog" id="true-modal" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0 pb-0">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <h6 class="modal-title text-center mb-3" id="loginTitle">Create a playlist</h6>
+                <div class="modal-body">
+                        <%= form_for(@playlist, url: playlists_path, method: :post, remote: true) do |f| %>
+                        <div class="form-group">
+                           <%= f.text_field :name, :autofocus => true, :placeholder => "Name of the playlist", :class => "form-control" %>
+                        </div>
+                        <button type="submit" class="btn btn-block btn-bold btn-air btn-info">Create</button>
+                         <% end %>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

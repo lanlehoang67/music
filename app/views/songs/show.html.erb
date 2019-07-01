@@ -66,7 +66,7 @@ for(var i = 0;i < lines.length;i++){
                         <div class="tab-pane fade show" id="lyrics" role="tabpanel" aria-labelledby="lyrics-tab">
                             <% if @song.lyric.present? %>
                               <%= @song.lyric %>
-                            <% else %>
+                            <% elsif current_user&.role === "admin" %>
                               <p><button class="btn btn-info toggle-lyric">Edit</button></p>
                               <textarea name="content" id="lyric" cols="50" rows="10"></textarea>
                               <p><button class="btn btn-info" onclick="setLyric()">Submit lyric</button></p>
@@ -87,7 +87,7 @@ for(var i = 0;i < lines.length;i++){
                 </div>
                 <div class="section">
                     <div class="mb-4">
-                      <%= form_for @comment, url: song_comments_path(@song), method: :post do %>
+                      <%= form_for @comment, url: song_comments_path(@song), method: :post, remote: true do %>
                         <div class="d-flex mb-3"><span>Rate:</span>
                             <div class="text-warning stars pl-2"><i class="la la-star"></i> <i class="la la-star"></i> <i class="la la-star"></i> <i class="la la-star"></i> <i class="la la-star"></i></div>
                         </div>
@@ -97,6 +97,7 @@ for(var i = 0;i < lines.length;i++){
                         </div>
                       <% end %>
                     </div>
-                    <%= render partial: "songs/comment", collection: @comments %>
+                    <div class="comments"><%= render partial: "songs/comment", collection: @comments %></div> 
+                    <div class="paginate-comments"><%= paginate @comments %></div>
                 </div>
             </div>

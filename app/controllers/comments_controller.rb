@@ -4,8 +4,16 @@ class CommentsController < ApplicationController
 
   def create
     return unless params[:comment]
-    @song.comments.build user_id: current_user.id, text: params[:comment]
-    @song.save
+    @song.comments.build user_id: current_user.id, text: params[:comment] 
+    if @song.save
+      @comments = @song.comments.newest.page params[:page]
+      respond_to do |f|
+        f.html
+        f.js
+      end
+    else 
+      render json: "error cannot create"
+    end
   end
 
   def update

@@ -1,0 +1,58 @@
+<div class="modal fade bd-example-modal-lg" id="playlist" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Playlists</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+   
+        <ul class="categories-list">
+     
+         <%= render partial: "static_pages/playlist_item", collection: @playlists %>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                 <button type="button" class="btn btn-primary" data-toggle="modal" href="#create-playlist">Create a playlist</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+.modal-content{
+  height: 500px;
+}
+/* IE7 */
+.categories-list {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 300px;
+  overflow-y: auto;
+  justify-content: space-between;
+}
+.categories-list li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+  border: 1px solid gray;
+  margin-right: 1rem;
+  border-radius: 5px;
+  min-width:150px;
+  min-height:100px;
+  margin:10px;
+}
+
+.categories-list li img {
+  width: 50px;
+  height: 50px;
+}
+
+</style>

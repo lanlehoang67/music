@@ -1,12 +1,13 @@
 class StaticPagesController < ApplicationController
   before_action :load_top_songs, :load_recent_song, :load_trending_song,
   :load_featured_artist, :load_movie_song,
-  :load_genres
+  :load_genres, :load_playlists
 
 
   def home
     @japan_songs = load_country_song "Japan"
     @china_songs = load_country_song "China"
+    @playlist = current_user.play_lists.new
   end
 
   private
@@ -31,8 +32,8 @@ class StaticPagesController < ApplicationController
     @featured_artists = Artist.take(10)
   end
 
-  def load_playlist
-    @playlists = current_user.playlists
+  def load_playlists
+    @playlists = current_user.play_lists
   end
 
   def load_movie_song
