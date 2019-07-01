@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
   def home
     @japan_songs = load_country_song "Japan"
     @china_songs = load_country_song "China"
-    @playlist = current_user.play_lists.new
+    @playlist = PlayList.new
   end
 
   private
@@ -33,7 +33,7 @@ class StaticPagesController < ApplicationController
   end
 
   def load_playlists
-    @playlists = current_user.play_lists
+    @playlists = current_user ? current_user.playlists : nil
   end
 
   def load_movie_song

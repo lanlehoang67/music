@@ -41,7 +41,7 @@ for(var i = 0;i < lines.length;i++){
                             <div class="col-xl-4 col-lg-6">
                                 <div class="pt-3 pt-lg-0 text-lg-right">
                                     <button class="btn btn-pill btn-air btn-danger btn-icon-only"><i class="la la-heart-o"></i></button>
-                                    <button class="btn btn-pill btn-air btn-warning btn-icon-only"><i class="la la-plus"></i></button>
+                                    <button onclick="addToPlayList('<%= @song.id %>'')"class="btn btn-pill btn-air btn-warning btn-icon-only"><i class="la la-plus"></i></button>
                                     <button class="btn btn-pill btn-air btn-success btn-icon-only"><i class="la la-download"></i></button>
                                     <button class="btn btn-pill btn-air btn-brand btn-icon-only"><i class="la la-share-alt"></i></button>
                                 </div>
@@ -87,6 +87,7 @@ for(var i = 0;i < lines.length;i++){
                 </div>
                 <div class="section">
                     <div class="mb-4">
+                    <% if user_signed_in? %>
                       <%= form_for @comment, url: song_comments_path(@song), method: :post, remote: true do %>
                         <div class="d-flex mb-3"><span>Rate:</span>
                             <div class="text-warning stars pl-2"><i class="la la-star"></i> <i class="la la-star"></i> <i class="la la-star"></i> <i class="la la-star"></i> <i class="la la-star"></i></div>
@@ -95,9 +96,16 @@ for(var i = 0;i < lines.length;i++){
                         <div class="text-right mt-2">
                             <button type="submit" class="btn btn-info btn-comment">Comment</button>
                         </div>
+
+
+                        <% end %>
+                         <% else %>
+                         <p>You must sign in to comment</p>
                       <% end %>
                     </div>
-                    <div class="comments"><%= render partial: "songs/comment", collection: @comments %></div> 
+                    <div class="comments"><%= render partial: "songs/comment", collection: @comments %></div>
                     <div class="paginate-comments"><%= paginate @comments %></div>
                 </div>
             </div>
+<div class="playlist-modal"><%= render partial: "static_pages/playlist_modal" %></div>
+                    <div class="create-modal"><%= render partial: "static_pages/create-modal" %></div>

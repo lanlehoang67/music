@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-  before_action :load_song, :load_comments, only: :show
+  before_action :load_song, :load_playlist, :load_playlists, :load_comments, only: :show
 
   def show
     @comment = Comment.new
@@ -9,6 +9,14 @@ class SongsController < ApplicationController
 
   def load_song
     @song = Song.find_by id: params[:id]
+  end
+
+  def load_playlist
+    @playlist = PlayList.new
+  end
+
+  def load_playlists
+    @playlists = current_user ? current_user.playlists : nil
   end
 
   def load_comments

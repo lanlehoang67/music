@@ -1,12 +1,12 @@
 class PlaylistsController < ApplicationController
-  before_action :load_playlists
+  before_action :authenticate_user!, :load_playlists
 
   def index
   end
 
   def create
   	@playlist = PlayList.new user_id: current_user.id, name: params[:play_list][:name]
-    if @playlist.save 
+    if @playlist.save
       respond_to do |f|
         f.js {render action: "create"}
       end
