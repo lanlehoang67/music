@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+  post "post_song", to: "playlists#post_song"
+  get "get_songs", to: "playlists#get_songs"
   resources :songs, except: :show
   resources :songs, only: :show do
     resources :comments

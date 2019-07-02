@@ -1,0 +1,20 @@
+<li class="custom-list--item list-group-item">
+                        <div class="text-dark custom-card--inline amplitude-song-container amplitude-play-pause" data-amplitude-song-index="<%= sidebar_song_counter %>" data-amplitude-playlist="special">
+                            <div class="custom-card--inline-img"><img src="<%= sidebar_song.picture %>" alt="" class="card-img--radius-sm"></div>
+                            <div class="custom-card--inline-desc">
+                                <p class="text-truncate mb-0"><%= sidebar_song.title %></p>
+                                <p class="text-truncate text-muted font-sm"><%= sidebar_song.artist.name %></p>
+                            </div>
+                        </div>
+                        <ul class="custom-card--labels d-flex ml-auto">
+                            <li class="dropleft"><a href="javascript:void(0);" class="btn btn-icon-only p-0 w-auto h-auto" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="la la-ellipsis-h"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link favorite"><i class="la la-heart-o"></i> <span>Favorite</span></a></li>
+                                    <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link"><i class="la la-plus"></i> <span>Add to Playlist</span></a></li>
+                                    <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link"><i class="la la-download"></i> <span>Download</span></a></li>
+                                    <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link"><i class="la la-share-alt"></i> <span>Share</span></a></li>
+                                    <li class="dropdown-item"><a href="song-details.html" class="dropdown-link"><i class="la la-info-circle"></i> <span>Song Info</span></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>

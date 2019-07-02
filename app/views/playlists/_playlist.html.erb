@@ -1,6 +1,66 @@
 <div class="col-xl-2 col-lg-3 col-sm-4 col-6 pb-4">
                             <div class="custom-card">
                                 <div class="custom-card--img">
-                                    <a href="javascript:void(0);" data-audio='{"name": "I Love You Mummy", "artist": "Arebica Luna", "album": "Mummy", "url": "../assets/audio/ringtone-1.mp3", "cover_art_url": "../assets/images/cover/small/1.jpg"}'><img src="../assets/images/cover/large/1.jpg" alt="I Love You Mummy" class="card-img--radius-md"></a>
-                                </div><a href="song-details.html" class="custom-card--link mt-2"><h6>I Love You Mummy</h6><p>Arebica Luna</p></a></div>
+                                    <a class="playlist-xhr" href="javascript:play('<%= playlist.id %>')"><img src="../assets/users/playlist.jpeg" alt="I Love You Mummy" class="card-img--radius-md"></a>
+                                </div><a href="song-details.html" class="custom-card--link mt-2"><h6><%= playlist.name %></h6></a></div>
                         </div>
+<script type="text/javascript">
+function convert(arr){
+	let newArr = arr.map(song=>({
+		name: song.title,
+		artist: "undefined",
+		album: "Album Name",
+		url: song.url.url,
+		cover_art_url: song.picture.url
+	}))
+	return newArr;
+}
+ function play(id){
+ 	$.ajax({
+			url: "/post_song",
+			dataType: "json",
+			method: "POST",
+			data: {"url": id},
+			success: function(){
+				$.ajax({
+					url: "/get_songs.json",
+					dataType: "json",
+					method: "GET",
+					success: function(res){
+						console.log(res)
+						let arr = convert(res);
+						console.log(arr)
+						if(arr.length > 0){
+							Amplitude.init(
+							{songs: [...arr],
+								playlists: {
+									special: {
+										songs: [...arr]
+									}
+						}})
+						Amplitude.playNow(arr[0])
+						$(".list-group-flush").html("<%= j render partial: 'layouts/sidebar_song', collection: @pl_songs %>")
+						}
+						else{
+							Amplitude.init(
+							{songs: [],
+								playlists: {
+									special: {
+										songs: []
+									}
+						}})
+						}
+						
+					},
+					error: function(err){
+						console.log(err)
+					}
+				})
+			},
+			error: function(err){
+				console.log(err)
+			}
+		})
+ }
+	
+	</script>

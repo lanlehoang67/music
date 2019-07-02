@@ -33,7 +33,7 @@ class StaticPagesController < ApplicationController
   end
 
   def load_playlists
-    @playlists = current_user ? current_user.playlists : nil
+    @playlists = current_user ? current_user.play_lists : nil
   end
 
   def load_movie_song
