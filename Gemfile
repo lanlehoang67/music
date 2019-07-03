@@ -15,6 +15,7 @@ gem 'faker'
 gem 'haml'
 gem 'ratyrate'
 gem 'kaminari'
+gem "turbolinks"
 gem 'paperclip'
 gem 'bootstrap-kaminari-views'
 gem 'coffee-rails', '~> 4.2'

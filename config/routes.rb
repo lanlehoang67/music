@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :songs, only: :show do
     resources :comments
   end
+  resources :users do
+    get "/favorites", to: "favorites#index"
+  end
   resources :playlists
   resources :playlists,only: :show do
       resources :playlist_songs

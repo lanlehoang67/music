@@ -31,7 +31,7 @@ function convert(arr){
 						let arr = convert(res);
 						console.log(arr)
 						if(arr.length > 0){
-							Amplitude.init(
+							Amplitude.addPlaylist(
 							{songs: [...arr],
 								playlists: {
 									special: {
@@ -41,16 +41,10 @@ function convert(arr){
 						Amplitude.playNow(arr[0])
 						$(".list-group-flush").html("<%= j render partial: 'layouts/sidebar_song', collection: @pl_songs %>")
 						}
-						else{
-							Amplitude.init(
-							{songs: [],
-								playlists: {
-									special: {
-										songs: []
-									}
-						}})
+						else {
+							$.notify("this playlist is empty","error")
 						}
-						
+					
 					},
 					error: function(err){
 						console.log(err)
