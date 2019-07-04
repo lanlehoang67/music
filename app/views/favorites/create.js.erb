@@ -1,0 +1,3 @@
+$.notify("added to favorite","success")
+$(".recent-list").html("").append("<%= j render partial: 'static_pages/item', collection: @recent_songs %>")
+$(".trending-list").html("").append("<%= j render partial: 'static_pages/item', collection: @trending_songs %>")

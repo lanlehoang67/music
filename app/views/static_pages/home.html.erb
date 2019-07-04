@@ -47,12 +47,12 @@
                         </ul>
                         <div class="tab-content" id="songsListContent">
                             <div class="tab-pane show active" id="recent" role="tabpanel" aria-labelledby="recent-tab">
-                                <div class="custom-list">
+                                <div class="custom-list recent-list">
                                     <%= render partial: "item", collection: @recent_songs %>
                                 </div>
                             </div>
                             <div class="tab-pane" id="trending" role="tabpanel" aria-labelledby="trending-tab">
-                                <div class="custom-list">
+                                <div class="custom-list trending-list">
                                     <%= render partial: "item", collection: @trending_songs %>
                                 </div>
                             </div>

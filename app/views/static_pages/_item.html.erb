@@ -15,7 +15,11 @@
                                             <li class="dropleft"><a href="javascript:void(0);" class="btn btn-icon-only p-0 w-auto h-auto" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="la la-ellipsis-h"></i></a>
                                                 <ul class="dropdown-menu">
                                                     <% if user_signed_in? %>
-                                                    <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link favorite"><i class="la la-heart-o"></i> <span>Favorite</span></a></li>
+                                                    <% if UserFavorite.find_by(favorite_id: item.id).present? %>
+                                                    <li class="dropdown-item"><a href="javascript:removeFromFavorite('<%= item.id %>');" class="dropdown-link favorite"><i class="la la-heart-o" style="transform: rotate(180deg) scaleX(-1);"></i> <span>Unfavorite</span></a></li>
+                                                    <% else %>
+                                                    <li class="dropdown-item"><a href="javascript:addToFavorite('<%= item.id %>');" class="dropdown-link favorite"><i class="la la-heart-o"></i> <span>Favorite</span></a></li>
+                                                    <% end %>
                                                     <li class="dropdown-item"><a href="javascript:addToPlaylist('<%= item.id %>');" class="dropdown-link"><i class="la la-plus"></i> <span>Add to Playlist</span></a></li>
                                                     <% end %>
                                                     <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link"><i class="la la-download"></i> <span>Download</span></a></li>

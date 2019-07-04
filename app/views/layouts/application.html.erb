@@ -39,9 +39,12 @@
                     <li class="nav-item"><a href="<%= root_path %>" class="nav-link"><i class="la la-home"></i><span>Home</span></a></li>
                     <li class="nav-item"><a href="<%= genres_path %>" class="nav-link"><i class="la la-diamond"></i><span>Genres</span></a></li>
                     <li class="nav-item"><a href="<%= artists_path %>" class="nav-link"><i class="la la-microphone"></i><span>Artists</span></a></li>
+                    <% if current_user %>
                     <li class="nav-item nav-header">Your Music</li>
                     <li class="nav-item"><a href="<%= playlists_path %>" class="nav-link"><i class="la la-play"></i><span>My Playlist</span></a></li>
-                    <li class="nav-item"><a href="#" class="nav-link"><i class="la la-heart-o"></i><span>Favorites</span></a></li>
+                    
+                    <li class="nav-item"><a href="/favorites" class="nav-link"><i class="la la-heart-o"></i><span>Favorites</span></a></li>
+                    <% end %>
                     <li class="nav-item"><a href="#" class="nav-link"><i class="la la-history"></i><span>History</span></a></li>
                     <li class="nav-item nav-header">Music Events</li>
                     <li class="nav-item"><a href="events.html" class="nav-link"><i class="la la-calendar"></i><span>Events</span></a></li>
@@ -248,6 +251,34 @@ $("body").removeClass("modal-open");
             },
             error: function(err){
                 console.log(err)
+            }
+        })
+    }
+        function addToFavorite(id){
+        $.ajax({
+            url: "/favorites",
+            method: "POST",
+            dataType: "script",
+            data: {"song_id": id},
+            success: function(res){ 
+                console.log(res)
+            },
+            error: function(err){
+                console.log(err)
+            }
+        })
+    }
+    function removeFromFavorite(id){
+        $.ajax({
+            url: "/favorites/"+id,
+            method: "DELETE",
+            dataType: "script",
+            success: function(res){
+                console.log(res)
+            },
+            error: function(err){
+                console.log(err)
+               
             }
         })
     }
