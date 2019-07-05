@@ -235,6 +235,20 @@
             console.log(song_id)
         $("#playlist").modal("show");
     }
+    function removeSongFromPlayList(playlist_id, song_id){
+        $.ajax({
+            url: `/playlists/${playlist_id}/playlist_songs/${song_id}`,
+            method: "DELETE",
+            dataType: "script",
+            success: function(res){
+               console.log(res)
+
+            },
+            error: function(err){
+                console.log(err)
+            }
+        })
+    }
     function closeAll(){
 $('.modal-backdrop').hide();
 $("body").removeClass("modal-open");

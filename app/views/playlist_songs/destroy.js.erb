@@ -1,0 +1,7 @@
+$.notify("removed song "+"<%=@playlist_song.song.title %>"+" from playlist","success");
+if("<%= @playlist_song.play_list.songs.blank? %>" == "true"){
+	$("div.custom-list").html("<p>This playlist is empty</p>")
+}
+else {
+		$("div.custom-list").html("<%= j render partial: 'playlists/playlist_song', collection: @playlist_song.play_list.songs, locals: {playlist_id: @playlist.id} %>")
+}

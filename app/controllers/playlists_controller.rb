@@ -1,6 +1,10 @@
 class PlaylistsController < ApplicationController
   before_action :authenticate_user!, :load_playlists
+  before_action :load_playlist, :load_songs, only: :show
   def index
+  end
+
+  def show
   end
 
   def post_song
@@ -26,6 +30,16 @@ class PlaylistsController < ApplicationController
   end
 
   private
+
+  def load_playlist
+    @playlist = PlayList.find_by id: params[:id]
+    return if @playlist
+    render json: "cannot find playlist with id" + params[:id]
+  end
+
+  def load_songs
+    @songs = @playlist.songs
+  end
 
   def load_playlists
   	@playlists = current_user.play_lists
