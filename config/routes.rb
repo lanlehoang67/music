@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :songs, only: :show do
     resources :comments
   end
+  get "/search", to: "application#search"
+  post "/search", to: "application#search"
   get "/favorites", to: "favorites#index"
   resources :favorites, only: [:create, :destroy]
   resources :playlists

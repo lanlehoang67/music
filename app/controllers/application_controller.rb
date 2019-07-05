@@ -29,12 +29,11 @@ class ApplicationController < ActionController::Base
   # end
 
   def search
-    @songs = Song.ransack(title_cont: params[:q]).result(distinct: true)
-    respond_to do |f|
-      f.html {}
-      f.json {
-        @songs = @songs.limit(5)
-      }
+    if request.xhr?
+      @search_songs = Song.ransack(title_cont: params[:q]).result(distinct: true)
+      respond_to do |f|
+        f.js {render :file => 'layouts/search'} 
+      end
     end
   end
 

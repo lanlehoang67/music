@@ -61,9 +61,9 @@
             <header id="header" class="bg-primary">
                 <div class="d-flex align-items-center">
                     <button type="button" class="btn toggle-menu mr-3" id="openSidebar"><span></span> <span></span> <span></span></button>
-                    <form action="#" id="searchForm">
+                    <form action="/search" method="post" id="searchForm" data-remote="true">
                         <button type="button" class="btn ion-ios-search"></button>
-                        <input type="text" placeholder="Search..." class="form-control">
+                        <input type="text" id="search-input" placeholder="Search..." class="form-control">
                         <div class="search-card" data-scrollable="true">
                             <div class="mb-3">
                                 <div class="d-flex"><span class="text-uppercase mr-auto font-weight-bold text-dark">Artists</span> <a href="artists.html">View All</a></div>
@@ -76,8 +76,8 @@
                             <div class="mb-3">
                                 <div class="d-flex"><span class="text-uppercase mr-auto font-weight-bold text-dark">Track</span> <a href="songs.html">View All</a></div>
                                 <hr>
-                                <div class="row">
-                                  search song
+                                <div class="row search-songs">
+                                  <%= render partial: "search_song", collection: @search_songs %>
 
                                 </div>
                             </div>
@@ -296,6 +296,16 @@ $("body").removeClass("modal-open");
             }
         })
     }
+    $("#search-input").on('change keydown paste input',function(){
+        var val = $("#search-input").val();
+        console.log(val)
+        $.ajax({
+            url: "/search",
+            method: "POST",  
+            data: {q: val},
+            dataType: "script",
+        })
+    })
     </script>
   </body>
 </html>
