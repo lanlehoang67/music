@@ -1,0 +1,15 @@
+
+            <div class="main-container">
+                <div class="row section">
+                    <div class="col-xl-3 col-md-5 pb-4">
+                    	<% if @hot_events.present? %>
+                        <%= render partial: "events/hot_event", object: @hot_events.first %>
+                        <% end %>
+                    </div>
+                    <div class="col-xl-5 col-md-7">
+                    	<% if @normal_event.present? %>
+                        <%= render partial: "events/event", collection: @normal_events %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>

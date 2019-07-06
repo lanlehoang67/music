@@ -22,7 +22,7 @@
                                                     <% end %>
                                                     <li class="dropdown-item"><a href="javascript:addToPlaylist('<%= item.id %>');" class="dropdown-link"><i class="la la-plus"></i> <span>Add to Playlist</span></a></li>
                                                     <% end %>
-                                                    <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link"><i class="la la-download"></i> <span>Download</span></a></li>
+                                                    <li class="dropdown-item"><a href="javascript:download('<%= item.url %>');" class="dropdown-link"><i class="la la-download"></i> <span>Download</span></a></li>
                                                     <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link"><i class="la la-share-alt"></i> <span>Share</span></a></li>
                                                     <li class="dropdown-item"><a href="song-details.html" class="dropdown-link"><i class="la la-info-circle"></i> <span>Song Info</span></a></li>
                                                 </ul>

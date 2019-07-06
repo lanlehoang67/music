@@ -1,4 +1,6 @@
 class Song < ApplicationRecord
+  attr_accessor :picture
+  before_save :check_admin
 	has_many :user_favorites, foreign_key: "favorite_id"
   has_many :song_genres
 	has_many :genres, through: :song_genres
@@ -8,11 +10,16 @@ class Song < ApplicationRecord
   belongs_to :play_list, optional: true
   belongs_to :album
   delegate :name, to: :artist, prefix: true
-  scope :top, ->{all.order(views: :desc).limit(10)}
-  scope :recent, ->{all.order(created_at: :desc).limit(10)}
-  scope :find_by_genre, ->(genre_to_find){joins(:genres).where("genres.title = ?",genre_to_find)}
-  scope :find_by_country, ->(country_to_find){where("songs.country = ?",country_to_find)}
-  scope :trending, ->{all.order(views: :desc).limit(10)}
+  scope :top, ->{where("songs.approved='true'").order(views: :desc).limit(10)}
+  scope :recent, ->{where("songs.approved='true'").order(created_at: :desc).limit(10)}
+  scope :find_by_genre, ->(genre_to_find){joins(:genres).where("genres.title = ? and songs.approved='true'",genre_to_find) }
+  scope :find_by_country, ->(country_to_find){where("songs.country = ? and songs.approved='true'",country_to_find)}
+  scope :trending, ->{where("songs.approved='true'").order(views: :desc).limit(10)}
   mount_uploader :picture, PictureUploader
   mount_uploader :url, PictureUploader
+
+  def check_admin
+    return self.approved = true if self.user.role == "admin" 
+    self.approved = false
+  end
 end

@@ -17,25 +17,14 @@
                     <div class="section col-xl-7 col-lg-6">
                         <div class="row h-100">
                             <div class="col-sm-5 pb-4">
-                                <div class="h-100 event event-v bg-img bg-img-radius-lg" style="background-image: url('../assets/background/vertical/1.jpg')">
-                                    <div class="event-content p-4"><a href="event-details.html"><h6>New Year Party</h6></a><span class="countdown mb-3"></span> <a href="#" class="btn btn-bold btn-pill btn-air btn-warning btn-sm">Buy Ticket</a></div>
-                                </div>
+                                <% if @hot_events&.any? %>
+                                <%= render partial: "events/hot_event", object: @hot_events.first %>
+                                <% end %>
                             </div>
                             <div class="col-sm-7">
-                                <div class="h-50 pb-4">
-                                    <div class="h-100 event event-h bg-img bg-img-radius-lg" style="background-image: url('../assets/background/horizontal/1.jpg')">
-                                        <div class="event-content p-4"><a href="event-details.html"><h6>Dance with DJ Nowan</h6></a>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, ex explicabo.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="h-50 pb-4">
-                                    <div class="h-100 event event-h bg-img bg-img-radius-lg" style="background-image: url('../assets/background/horizontal/2.jpg')">
-                                        <div class="event-content p-4"><a href="event-details.html"><h6>Move You's Legs</h6></a>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, ex explicabo.</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                <% if @normal_events&.any? %>
+                                <%= render partial: "events/event", collection: @normal_events %>
+                                <% end %>
                             </div>
                         </div>
                     </div>
@@ -70,7 +59,7 @@
                             <div class="flex-grow-1">
                                 <h4>New Releases</h4>
                                 <p>Listen recently release music</p>
-                            </div><a href="songs.html" class="btn btn-sm btn-pill btn-air btn-primary">View All</a></div>
+                            </div><a href="/songs" class="btn btn-sm btn-pill btn-air btn-primary">View All</a></div>
                         <hr>
                     </div>
                     <div class="carousel-item-5 arrow-pos-3">
@@ -83,24 +72,11 @@
                             <div class="flex-grow-1">
                                 <h4>Featured Artists</h4>
                                 <p>Select you best to listen</p>
-                            </div><a href="artists.html" class="btn btn-sm btn-pill btn-air btn-primary">View All</a></div>
+                            </div><a href="/artists" class="btn btn-sm btn-pill btn-air btn-primary">View All</a></div>
                         <hr>
                     </div>
                     <div class="carousel-item-6 arrow-pos-2">
                         <%= render partial: "featured_artist", collection: @featured_artists %>
-                    </div>
-                </div>
-                <div class="section">
-                    <div class="heading">
-                        <div class="d-flex flex-wrap align-items-end">
-                            <div class="flex-grow-1">
-                                <h4>Your Playlist</h4>
-                                <p>You best to listen</p>
-                            </div><a href="playlist.html" class="btn btn-sm btn-pill btn-air btn-primary">View All</a></div>
-                        <hr>
-                    </div>
-                    <div class="carousel-item-4 arrow-pos-1">
-                        <%= render partial: "playlist", collection: @playlists %>
                     </div>
                 </div>
                 <div class="section">
@@ -135,7 +111,7 @@
                             <div class="flex-grow-1">
                                 <h4>Genres</h4>
                                 <p>Select you genre</p>
-                            </div><a href="genres.html" class="btn btn-sm btn-pill btn-air btn-primary">View All</a></div>
+                            </div><a href="/genres" class="btn btn-sm btn-pill btn-air btn-primary">View All</a></div>
                         <hr>
                     </div>
                     <div class="carousel-item-6 arrow-pos-1">

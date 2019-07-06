@@ -47,7 +47,7 @@
                     <% end %>
                     <li class="nav-item"><a href="#" class="nav-link"><i class="la la-history"></i><span>History</span></a></li>
                     <li class="nav-item nav-header">Music Events</li>
-                    <li class="nav-item"><a href="events.html" class="nav-link"><i class="la la-calendar"></i><span>Events</span></a></li>
+                    <li class="nav-item"><a href="/events" class="nav-link"><i class="la la-calendar"></i><span>Events</span></a></li>
                     <li class="nav-item"><a href="event-details.html" class="nav-link"><i class="la la-newspaper-o"></i><span>Event Details</span></a></li>
                     <li class="nav-item"><a href="add-event.html" class="nav-link"><i class="la la-pencil-square-o"></i><span>Add Event</span></a></li>
                     <li class="nav-item nav-header">Extra Pages</li>
@@ -55,37 +55,35 @@
                     <li class="nav-item"><a href="blank.html" class="nav-link"><i class="la la-file"></i><span>Blank</span></a></li>
                 </ul>
             </nav>
-            <div class="sidebar-footer"><a href="add-music.html" class="btn btn-block btn-danger btn-air btn-bold"><i class="ion-md-musical-note"></i> <span>Add Music</span></a></div>
+            <div class="sidebar-footer"><a href="/songs/new" class="btn btn-block btn-danger btn-air btn-bold"><i class="ion-md-musical-note"></i> <span>Add Music</span></a></div>
         </aside>
            <main id="pageWrapper">
             <header id="header" class="bg-primary">
                 <div class="d-flex align-items-center">
                     <button type="button" class="btn toggle-menu mr-3" id="openSidebar"><span></span> <span></span> <span></span></button>
-                    <form action="/search" method="post" id="searchForm" data-remote="true">
+                    <form action="#" id="searchForm" data-remote="true">
                         <button type="button" class="btn ion-ios-search"></button>
                         <input type="text" id="search-input" placeholder="Search..." class="form-control">
                         <div class="search-card" data-scrollable="true">
                             <div class="mb-3">
-                                <div class="d-flex"><span class="text-uppercase mr-auto font-weight-bold text-dark">Artists</span> <a href="artists.html">View All</a></div>
+                                <div class="d-flex"><span class="text-uppercase mr-auto font-weight-bold text-dark">Artists</span> <a href="/artists">View All</a></div>
                                 <hr>
-                                <div class="row">
-                                    search artist
+                                <div class="row search-artists">
 
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <div class="d-flex"><span class="text-uppercase mr-auto font-weight-bold text-dark">Track</span> <a href="songs.html">View All</a></div>
+                                <div class="d-flex"><span class="text-uppercase mr-auto font-weight-bold text-dark">Track</span> <a href="/songs">View All</a></div>
                                 <hr>
                                 <div class="row search-songs">
-                                  <%= render partial: "search_song", collection: @search_songs %>
+                                  <%= render partial: "static_pages/search_song", collection: @search_songs %>
 
                                 </div>
                             </div>
                             <div>
-                                <div class="d-flex"><span class="text-uppercase mr-auto font-weight-bold text-dark">Albums</span> <a href="songs.html">View All</a></div>
+                                <div class="d-flex"><span class="text-uppercase mr-auto font-weight-bold text-dark">Albums</span> <a href="/albums">View All</a></div>
                                 <hr>
-                                <div class="row">
-                                    search album
+                                <div class="row search-albums">
                                 </div>
                             </div>
                         </div>
@@ -295,6 +293,22 @@ $("body").removeClass("modal-open");
                
             }
         })
+    }
+    function download(url){
+        var arr = url.split("/");
+        var newUrl = arr[arr.length-1]
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", '/'+newUrl);
+        xhr.responseType = "arraybuffer";
+
+        xhr.onload = function () {
+            if (this.status === 200) {
+                var blob = new Blob([xhr.response], {type: "application/mp3"});
+                var objectUrl = URL.createObjectURL(blob);
+                window.open(objectUrl);
+            }
+        };
+xhr.send();
     }
     $("#search-input").on('change keydown paste input',function(){
         var val = $("#search-input").val();
