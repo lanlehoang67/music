@@ -1,4 +1,4 @@
  <div class="custom-card">
                             <div class="custom-card--img">
-                                <a href="artist-details.html"><img src="<%= featured_artist.picture %>" alt="<%= featured_artist.name %>" class="card-img--radius-lg"></a>
+                                <a href="<%= artist_path featured_artist %>"><img src="<%= featured_artist.picture.present? ? featured_artist.picture : '../assets/users/default.png' %>" alt="<%= featured_artist.name %>" class="card-img--radius-lg"></a>
                             </div><a href="artist-details.html" class="custom-card--link mt-2"><h6 class="mb-0"><%= featured_artist.name %></h6></a></div>

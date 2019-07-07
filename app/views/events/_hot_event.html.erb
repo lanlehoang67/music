@@ -1,3 +1,3 @@
  <div class="h-100 event event-v bg-img bg-img-radius-lg" style="background-image: url('<%= hot_event.hot_picture %>')">
-                            <div class="event-content p-4"><a href="event-details.html"><h6><%= hot_event.name %></h6></a><span class="countdown mb-3"></span> <a href="#" class="btn btn-bold btn-pill btn-air btn-warning btn-sm">Buy Ticket</a></div>
+                            <div class="event-content p-4"><a href="<%= event_path hot_event %>"><h6><%= hot_event.name %></h6></a><span class="countdown mb-3"></span> <a href="<%= event_path hot_event %>" class="btn btn-bold btn-pill btn-air btn-warning btn-sm">Buy Ticket</a></div>
                         </div>

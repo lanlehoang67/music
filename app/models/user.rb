@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :songs, through: :user_favorites
   has_many :upload_songs, class_name: Song.name, foreign_key: "user_id"
   has_many :comments
+  has_many :history_songs
+  has_many :h_songs, through: :history_songs, source: "song"
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   mount_uploader :picture, PictureUploader

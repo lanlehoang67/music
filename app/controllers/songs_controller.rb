@@ -5,45 +5,11 @@ class SongsController < ApplicationController
   end
 
   def new
+    @song = Song.new
   end
 
   def create
-    @song_to_create = Song.new title: params[:name], picture: params[:image], url: params[:file], album_id: 3, user_id: current_user.id
-    @artist_to_check = Artist.find_by name: params[:artist]
-    if @artist_to_check.nil?
-      @new_artist = Artist.new name: params[:name]
-      if @new_artist.save
-        @song_to_create.artist_id = @new_artist.id
-        if @song_to_create.save
-          respond_to do |f|
-            byebug
-            f.js {render js: "$.notify('created successfully','success')"}
-          end
-        else 
-          respond_to do |f|
-            f.js {render js: "$.notify('cannot create song','error')"}
-          end
-        end
-      else
-        respond_to do |f|
-          f.js {render js: '$.notify("cannot create artist","error")'}
-        end
-      end
-    else 
-      @song_to_create.artist_id = @artist_to_check.id
-      if @song_to_create.save
-        respond_to do |f|
-                      byebug
-
-            f.js {render js: "$.notify('created successfully','success')"}
-          end
-      else
-
-        respond_to do |f|
-          f.js {render js: "$.notify('cannot create song','error')"}
-        end
-      end
-    end
+    check_song
   end
 
   def show
@@ -51,6 +17,28 @@ class SongsController < ApplicationController
   end
 
   private
+
+  def check_song 
+    @song = Song.new
+    @artist_to_check = Artist.find_by name: params[:artist]
+    if @artist_to_check.nil?
+      @new_artist = Artist.create name: params[:artist], approved: false
+      @song = @new_artist.songs.build url: params[:song][:url], title: params[:name], user_id: current_user.id, picture: params[:song][:picture], album_id: 3
+    else
+      @song = @artist_to_check.songs.build url: params[:song][:url], title: params[:name], user_id: current_user.id, picture: params[:song][:picture], album_id: 3
+    end
+    if @song.save
+      respond_to do |f|
+        f.js {render js: "$.notify('uploaded music successfully, waiting for admin to approve','success');
+                          $('#new_song').trigger('reset');"}
+      end
+    else
+      respond_to do |f|
+        f.js {render js: "$.notify('cannot upload music','error');
+                          $('#new_song').trigger('reset');"}
+      end
+    end
+  end
 
   def load_song
     @song = Song.find_by id: params[:id]
@@ -74,5 +62,9 @@ class SongsController < ApplicationController
 
   def load_album_songs
     @album_songs = @song.album.songs
+  end
+
+  def song_params
+    params.require(:song).permit(:title, :picture, :song, :artist)
   end
 end
