@@ -346,6 +346,18 @@ xhr.send();
            })
         
     }
+    function deletePlaylist(id){
+        $.ajax({
+            url: "/playlists/"+id,
+            method: "DELETE",
+            success: function(res){
+                console.log(res)
+            },
+            error: function(err){
+                console.log(err)
+            }
+        })
+    }
     </script>
   </body>
 </html>

@@ -10,7 +10,7 @@ class ArtistsController < ApplicationController
   private 
 
   def load_artists
-  	@artists = Artist.all
+  	@artists = Artist.select_approved
   end
 
   def load_artist

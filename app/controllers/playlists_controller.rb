@@ -29,6 +29,10 @@ class PlaylistsController < ApplicationController
     end
   end
 
+  def destroy
+    byebug
+  end
+
   private
 
   def load_playlist

@@ -27,6 +27,8 @@ class SongsController < ApplicationController
     else
       @song = @artist_to_check.songs.build url: params[:song][:url], title: params[:name], user_id: current_user.id, picture: params[:song][:picture], album_id: 3
     end
+    @genre = Genre.find_by id: params[:song][:genres]
+    @song.genres << @genre
     if @song.save
       respond_to do |f|
         f.js {render js: "$.notify('uploaded music successfully, waiting for admin to approve','success');

@@ -35,8 +35,7 @@
                                         <label for="songGenres" class="col-md-4 text-md-right col-form-label">Genres</label>
                                         <div class="col-md-7">
                                             <div class="custom-file">
-                                                <%= f.collection_select :genres, Genre.all, :id, :title, prompt: :select %>
-                                                <label class="custom-file-label" for="songImage">Select genres</label>
+                                                <%= f.collection_select :genres, Genre.all, :id, :title, {prompt: :select}, {class: "form-control"}%>
                                             </div>
                                         </div>
                                     </div>
