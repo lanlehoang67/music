@@ -1,5 +1,13 @@
 class Song < ApplicationRecord
+  attr_accessor :url
   attr_accessor :picture
+  def artist_name
+    return self.artist.name
+  end
+
+  def album_name
+    return self.album.name
+  end
 	has_many :user_favorites, foreign_key: "favorite_id"
   has_many :song_genres
 	has_many :genres, through: :song_genres
@@ -21,6 +29,6 @@ class Song < ApplicationRecord
   do_not_validate_attachment_file_type :picture
   do_not_validate_attachment_file_type :url
   def check_admin
-    return self.approved = true if self.user.role == "admin" 
+    return self.approved = true if self.user.role == "admin"
   end
 end

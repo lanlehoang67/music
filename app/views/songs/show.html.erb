@@ -35,7 +35,7 @@ for(var i = 0;i < lines.length;i++){
                             <div class="col-xl-8 col-lg-6">
                                 <h5><%= @song.title %></h5>
                                 <p><%= @song.artist.name %></p>
-                                
+                                <p>Lượt nghe: <%= @song.views %></p>
                                 <div class="mt-4"><a href="javascript:void(0);" class="btn btn-pill btn-air btn-bold btn-danger" data-audio='{"name": "<%= @song.title %>", "artist": "<%= @song.artist.name %>", "album": "<%= @song.album %>", "url": "<%= @song.url %>", "cover_art_url": "<%= @song.picture %>"}'>Play</a></div>
                             </div>
                             <div class="col-xl-4 col-lg-6">
@@ -89,7 +89,7 @@ for(var i = 0;i < lines.length;i++){
                     <div class="mb-4">
                     <% if user_signed_in? %>
                       <%= form_for @comment, url: song_comments_path(@song), method: :post, remote: true do %>
-                        
+
                         <textarea name="comment" id="comment" cols="30" rows="5" class="form-control"></textarea>
                         <div class="text-right mt-2">
                             <button type="submit" class="btn btn-info btn-comment">Comment</button>

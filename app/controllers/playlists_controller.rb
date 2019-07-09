@@ -16,7 +16,7 @@ class PlaylistsController < ApplicationController
   def get_songs
     @playlist = PlayList.find_by id: session[:url]
     respond_to do |f|
-      f.json {render json: @playlist.songs}
+      f.json {render json:  @playlist.songs, methods: [:url, :picture, :artist_name, :album_name]}
     end
   end
 

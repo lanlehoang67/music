@@ -3,8 +3,8 @@
                                 <div class="custom-card--img">
                                     <a class="playlist-xhr" href="javascript:play('<%= playlist.id %>')"><img src="../assets/users/playlist.jpeg" alt="I Love You Mummy" class="card-img--radius-md"></a>
                                 </div>
-                                 <button class="btn btn-secondary" onclick="link('<%= playlist.id %>')"><%= playlist.name %></button>
-                                 <button class="btn btn-primary" onclick="deletePlaylist('<%= playlist.id %>')">Delete</button>
+                                 <button class="btn btn-secondary" style="margin: 0 0 0 50px" onclick="link('<%= playlist.id %>')"><%= playlist.name %></button>
+
                                 </a>
                             </div>
 
@@ -16,10 +16,10 @@ function link(id){
 function convert(arr){
 	let newArr = arr.map(song=>({
 		name: song.title,
-		artist: "undefined",
-		album: "Album Name",
-		url: song.url_file_name,
-		cover_art_url: song.picture_file_name
+		artist: song.artist_name,
+		album: song.album_name,
+		url: song.url,
+		cover_art_url: song.picture
 	}))
 	return newArr;
 }
@@ -47,12 +47,11 @@ function convert(arr){
 									}
 						}})
 						Amplitude.playNow(arr[0])
-						$(".list-group-flush").html("<%= j render partial: 'layouts/sidebar_song', collection: @pl_songs %>")
 						}
 						else {
 							$.notify("this playlist is empty","error")
 						}
-					
+
 					},
 					error: function(err){
 						console.log(err)
@@ -64,5 +63,5 @@ function convert(arr){
 			}
 		})
  }
-	
+
 	</script>

@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
     @playlist = PlayList.find_by id: session[:url]
     return unless @playlist
     @pl_songs = @playlist.songs
+    return @pl_songs
   end
   # def record_not_found(exception)
   #   render json: {error: exception.message}.to_json, status: 404
@@ -42,7 +43,7 @@ class ApplicationController < ActionController::Base
     @events.each do |e|
       if e.type_event == "hot"
         @hot_events << e
-      else 
+      else
         @normal_events << e
       end
     end
@@ -54,7 +55,7 @@ class ApplicationController < ActionController::Base
       @search_artists = Artist.ransack(name_cont: params[:q]).result(distinct: true)
       @search_albums = Album.ransack(name_cont: params[:q]).result(distinct: true)
       respond_to do |f|
-        f.js {render :file => 'layouts/search'} 
+        f.js {render :file => 'layouts/search'}
       end
     end
   end

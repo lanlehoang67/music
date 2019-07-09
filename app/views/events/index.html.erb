@@ -2,12 +2,12 @@
             <div class="main-container">
                 <div class="row section">
                     <div class="col-xl-3 col-md-5 pb-4">
-                    	<% if @hot_events.present? %>
-                        <%= render partial: "events/hot_event", object: @hot_events.first %>
+                    	<% if @hot_events&.any? %>
+                        <%= render partial: "events/hot_event", collection: @hot_events %>
                         <% end %>
                     </div>
                     <div class="col-xl-5 col-md-7">
-                    	<% if @normal_event.present? %>
+                    	<% if @normal_events&.any? %>
                         <%= render partial: "events/event", collection: @normal_events %>
                         <% end %>
                     </div>
