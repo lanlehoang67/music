@@ -45,14 +45,10 @@
                     
                     <li class="nav-item"><a href="/favorites" class="nav-link"><i class="la la-heart-o"></i><span>Favorites</span></a></li>
                     <% end %>
-                    <li class="nav-item"><a href="#" class="nav-link"><i class="la la-history"></i><span>History</span></a></li>
+                    <li class="nav-item"><a href="/history_songs" class="nav-link"><i class="la la-history"></i><span>History</span></a></li>
                     <li class="nav-item nav-header">Music Events</li>
                     <li class="nav-item"><a href="/events" class="nav-link"><i class="la la-calendar"></i><span>Events</span></a></li>
-                    <li class="nav-item"><a href="event-details.html" class="nav-link"><i class="la la-newspaper-o"></i><span>Event Details</span></a></li>
-                    <li class="nav-item"><a href="add-event.html" class="nav-link"><i class="la la-pencil-square-o"></i><span>Add Event</span></a></li>
-                    <li class="nav-item nav-header">Extra Pages</li>
-                    <li class="nav-item"><a href="error.html" class="nav-link"><i class="la la-times-circle-o"></i><span>Error</span></a></li>
-                    <li class="nav-item"><a href="blank.html" class="nav-link"><i class="la la-file"></i><span>Blank</span></a></li>
+                    
                 </ul>
             </nav>
             <div class="sidebar-footer"><a href="/songs/new" class="btn btn-block btn-danger btn-air btn-bold"><i class="ion-md-musical-note"></i> <span>Add Music</span></a></div>
@@ -320,6 +316,48 @@ xhr.send();
             dataType: "script",
         })
     })
+    $("a").click(function(){
+        if($(this).attr("data-audio")!=undefined){
+            var name = JSON.parse($(this).attr("data-audio"))["name"];
+            console.log(name)
+           $.ajax({
+            url: "/history_songs",
+            method: "POST",
+            data: {name: name},
+            success: function(res){
+                console.log(res)
+            },
+            error: function(err){
+                console.log(err)
+            }
+           })
+        }
+    })
+    function clearAll(){
+        $.ajax({
+            url: "/destroy_all",
+            method: "DELETE",
+            success: function(res){
+                $(".history-songs").fadeOut()
+            },
+            error: function(err){
+                console.log(err)
+            }
+           })
+        
+    }
+    function deletePlaylist(id){
+        $.ajax({
+            url: "/playlists/"+id,
+            method: "DELETE",
+            success: function(res){
+                console.log(res)
+            },
+            error: function(err){
+                console.log(err)
+            }
+        })
+    }
     </script>
   </body>
 </html>

@@ -1,0 +1,16 @@
+
+            <div class="main-container">
+                <div class="section">
+                    <div class="heading">
+                        <div class="d-flex flex-wrap align-items-end">
+                            <div class="flex-grow-1">
+                                <h4>History</h4>
+                                <p>You recently listen</p>
+                            </div><a href="javascript:clearAll();" class="btn btn-sm btn-pill btn-air btn-primary">Clear All</a></div>
+                        <hr>
+                    </div>
+                    <div class="row history-songs">
+                    	<%= render partial: "songs/song", collection: @songs %>
+                    </div>
+                </div>
+            </div>

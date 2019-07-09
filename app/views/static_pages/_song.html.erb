@@ -1,17 +1,17 @@
-         <div class="custom-card">
-                            <div class="custom-card--img">
-                                <div class="custom-card--info">
-                                    <ul class="custom-card--labels d-flex">
-                                        <li><span class="badge badge-pill badge-warning"><i class="la la-star"></i></span></li>
-                                    </ul>
-                                    <div class="dropdown dropdown-icon"><a href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ion-md-more"></i></a>
-                                        <ul class="dropdown-menu dropdown-menu-right">
-                                            <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link favorite"><i class="la la-heart-o"></i></a></li>
-                                            <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link"><i class="la la-plus"></i></a></li>
-                                            <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link"><i class="la la-download"></i></a></li>
-                                            <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link"><i class="la la-share-alt"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <a href="javascript:void(0);" data-audio='{"name": "<%= song.title %>", "artist": "<%= song.artist.name %>", "album": "Mummy", "url": "<%= song.url %>", "cover_art_url": "<%= song.picture %>"}'><img src=".<%= song.picture %>" alt="<%= song.title %>" class="card-img--radius-lg"></a>
-                            </div><a href="song-details.html" class="custom-card--link mt-2"><h6><%= song.title %></h6><p><%= song.artist.name %></p></a></div>
+ <div class="custom-card">
+    <div class="custom-card--img">
+        <div class="custom-card--info">
+            <ul class="custom-card--labels d-flex">
+                <li><span class="badge badge-pill badge-warning"><i class="la la-star"></i></span></li>
+            </ul>
+            <div class="dropdown dropdown-icon"><a href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ion-md-more"></i></a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link favorite"><i class="la la-heart-o"></i></a></li>
+                    <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link"><i class="la la-plus"></i></a></li>
+                    <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link"><i class="la la-download"></i></a></li>
+                    <li class="dropdown-item"><a href="javascript:void(0);" class="dropdown-link"><i class="la la-share-alt"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <a href="javascript:void(0);" data-audio='{"name": "<%= song.title %>", "artist": "<%= song.artist.name %>", "album": "Mummy", "url": "<%= song.url %>", "cover_art_url": "<%= song.picture %>"}'><img src=".<%= song.picture %>" alt="<%= song.title %>" class="card-img--radius-lg"></a>
+    </div><a href="<%= song_path song %>" class="custom-card--link mt-2"><h6><%= song.title %></h6><p><%= song.artist.name %></p></a></div>

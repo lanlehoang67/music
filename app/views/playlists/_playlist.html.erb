@@ -3,7 +3,8 @@
                                 <div class="custom-card--img">
                                     <a class="playlist-xhr" href="javascript:play('<%= playlist.id %>')"><img src="../assets/users/playlist.jpeg" alt="I Love You Mummy" class="card-img--radius-md"></a>
                                 </div>
-                                 <button class="btn btn-secondary" onclick="link('<%= playlist.id %>')" style="margin: 10px 0 0 60px;"><%= playlist.name %></button>
+                                 <button class="btn btn-secondary" onclick="link('<%= playlist.id %>')"><%= playlist.name %></button>
+                                 <button class="btn btn-primary" onclick="deletePlaylist('<%= playlist.id %>')">Delete</button>
                                 </a>
                             </div>
 
@@ -17,8 +18,8 @@ function convert(arr){
 		name: song.title,
 		artist: "undefined",
 		album: "Album Name",
-		url: song.url.url,
-		cover_art_url: song.picture.url
+		url: song.url_file_name,
+		cover_art_url: song.picture_file_name
 	}))
 	return newArr;
 }

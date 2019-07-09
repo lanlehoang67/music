@@ -1,2 +1,36 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+
+            <div class="main-container">
+                <div class="section">
+                    <div class="heading">
+                        <div class="d-flex flex-wrap align-items-end">
+                            <div class="flex-grow-1">
+                                <h4><%= @event.name %></h4>
+                                <p><%= @event.paid ? "Paid event" : "Free event" %></p>
+                            </div>
+                            <% if @event.paid %>
+                            <a href="songs.html" class="btn btn-bold btn-pill btn-air btn-warning">Buy now</a>
+
+                            <% end %>
+                            </div>
+                        <hr>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="event event-h bg-img bg-img-radius-lg mb-4" style="background-image: url('<%= @event.picture %>')"></div>
+                            <div class="mb-3"><b>Venue At</b>
+                                <p><%= @event.venue %>
+                                    </p>
+                            </div>
+                            <div class="mb-3"><b>Phone Number</b>
+                                <p><%= @event.phone_number %></p>
+                            </div>
+                            <div class="mb-3"><b>Email</b>
+                                <p><%= @event.email %></p>
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <p><%= @event.description %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>

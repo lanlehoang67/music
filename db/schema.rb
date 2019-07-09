@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_06_112413) do
+ActiveRecord::Schema.define(version: 2019_07_07_104611) do
 
   create_table "albums", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "artist_id"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_07_06_112413) do
     t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "approved"
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -65,6 +66,15 @@ ActiveRecord::Schema.define(version: 2019_07_06_112413) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "picture"
+  end
+
+  create_table "history_songs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "song_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["song_id"], name: "index_history_songs_on_song_id"
+    t.index ["user_id"], name: "index_history_songs_on_user_id"
   end
 
   create_table "lyrics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -141,7 +151,6 @@ ActiveRecord::Schema.define(version: 2019_07_06_112413) do
 
   create_table "songs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "artist_id"
-    t.string "url"
     t.string "title"
     t.string "content"
     t.string "length"
@@ -151,7 +160,6 @@ ActiveRecord::Schema.define(version: 2019_07_06_112413) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.string "picture"
     t.string "url_file_name"
     t.string "url_content_type"
     t.bigint "url_file_size"
@@ -159,6 +167,10 @@ ActiveRecord::Schema.define(version: 2019_07_06_112413) do
     t.string "country"
     t.string "lyric"
     t.boolean "approved"
+    t.string "picture_file_name"
+    t.string "picture_content_type"
+    t.bigint "picture_file_size"
+    t.datetime "picture_updated_at"
     t.index ["album_id"], name: "index_songs_on_album_id"
     t.index ["artist_id"], name: "index_songs_on_artist_id"
     t.index ["user_id"], name: "index_songs_on_user_id"
@@ -196,6 +208,8 @@ ActiveRecord::Schema.define(version: 2019_07_06_112413) do
   add_foreign_key "albums", "artists"
   add_foreign_key "comments", "songs"
   add_foreign_key "comments", "users"
+  add_foreign_key "history_songs", "songs"
+  add_foreign_key "history_songs", "users"
   add_foreign_key "lyrics", "songs"
   add_foreign_key "notifications", "user_favorites"
   add_foreign_key "notifications", "users"

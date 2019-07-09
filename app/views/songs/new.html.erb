@@ -6,7 +6,7 @@
                             <div class="card-header">
                                 <h6 class="card-title mb-0">Add Music</h6></div>
                             <div class="card-body">
-                                <form action="#" id="addSongForm">
+                                <%= form_for @song, url: "/songs", method: :post, remote: true do |f| %>
                                     <div class="form-row form-group">
                                         <label for="songName" class="col-md-4 text-md-right col-form-label">Song Name</label>
                                         <div class="col-md-7">
@@ -17,7 +17,7 @@
                                         <label for="songImage" class="col-md-4 text-md-right col-form-label">Song Cover Image</label>
                                         <div class="col-md-7">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" name="image" id="songImage">
+                                                <%= f.file_field :picture, class: "custom-file-input" %>
                                                 <label class="custom-file-label" for="songImage">Choose file</label>
                                             </div>
                                         </div>
@@ -26,8 +26,16 @@
                                         <label for="songFile" class="col-md-4 text-md-right col-form-label">Song File</label>
                                         <div class="col-md-7">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" name="file" id="songFile">
+                                                <%= f.file_field :url, class: "custom-file-input" %>
                                                 <label class="custom-file-label" for="songImage">Choose file</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row form-group">
+                                        <label for="songGenres" class="col-md-4 text-md-right col-form-label">Genres</label>
+                                        <div class="col-md-7">
+                                            <div class="custom-file">
+                                                <%= f.collection_select :genres, Genre.all, :id, :title, {prompt: :select}, {class: "form-control"}%>
                                             </div>
                                         </div>
                                     </div>
@@ -37,14 +45,14 @@
                                             <input type="text" name="artist" id="artistName" class="form-control">
                                         </div>
                                     </div>
-                                </form>
+                               <% end %>
                             </div>
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-md-4"></div>
                                     <div class="col-md-7">
-                                        <button type="submit" id="submit-btn" class="btn btn-brand btn-air">Save Song</button>
-                                        <button type="button" class="btn btn-outline-secondary">Clear Form</button>
+                                        <button type="submit" id="submit-btn" form="new_song" class="btn btn-brand btn-air">Save Song</button>
+                                        <button type="button" id="clear-btn" class="btn btn-outline-secondary">Clear Form</button>
                                     </div>
                                 </div>
                             </div>
@@ -53,24 +61,8 @@
                 </div>
             </div>
 <script type="text/javascript">
-    $("#submit-btn").click(function(){
-        var songName = $("#songName").val()
-        var songImage = $("#songImage").val()
-        var songFile = $("#songFile").val()
-        var artistName = $("#artistName").val()
-       $.ajax({
-        url: "/songs",
-        method: "POST",
-        dataType: "script",
-        data: {name: songName, image: songImage, file: songFile, artist: artistName},
-        success: function(res){
-            console.log(res)
-        },
-        error: function(err){
-            console.log(err)
-        }
-    }) 
-    })
     
-
+    $("#clear-btn").click(function(){
+        $('#new_song').trigger('reset')
+    })
 </script>

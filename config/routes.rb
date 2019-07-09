@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :history_songs
+  delete "/destroy_all", to: "history_songs#destroy_all"
   resources :events
   post "post_song", to: "playlists#post_song"
   get "get_songs", to: "playlists#get_songs"

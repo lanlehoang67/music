@@ -35,14 +35,14 @@ for(var i = 0;i < lines.length;i++){
                             <div class="col-xl-8 col-lg-6">
                                 <h5><%= @song.title %></h5>
                                 <p><%= @song.artist.name %></p>
-                                <div class="text-warning stars"><i class="la la-star"></i> <i class="la la-star"></i> <i class="la la-star"></i> <i class="la la-star"></i> <i class="la la-star-half-empty"></i></div><span class="badge badge-pill badge-warning mt-3">Premium</span>
+                                
                                 <div class="mt-4"><a href="javascript:void(0);" class="btn btn-pill btn-air btn-bold btn-danger" data-audio='{"name": "<%= @song.title %>", "artist": "<%= @song.artist.name %>", "album": "<%= @song.album %>", "url": "<%= @song.url %>", "cover_art_url": "<%= @song.picture %>"}'>Play</a></div>
                             </div>
                             <div class="col-xl-4 col-lg-6">
                                 <div class="pt-3 pt-lg-0 text-lg-right">
-                                    <button class="btn btn-pill btn-air btn-danger btn-icon-only"><i class="la la-heart-o"></i></button>
+                                    <button onclick="addToFavorite('<%= @song.id %>')"id="addToFavorite" class="btn btn-pill btn-air btn-danger btn-icon-only"><i class="la la-heart-o"></i></button>
                                     <button onclick="addToPlayList('<%= @song.id %>'')"class="btn btn-pill btn-air btn-warning btn-icon-only"><i class="la la-plus"></i></button>
-                                    <button class="btn btn-pill btn-air btn-success btn-icon-only"><i class="la la-download"></i></button>
+                                    <button onclick="download('<%= @song.url %>')"class="btn btn-pill btn-air btn-success btn-icon-only"><i class="la la-download"></i></button>
                                     <button class="btn btn-pill btn-air btn-brand btn-icon-only"><i class="la la-share-alt"></i></button>
                                 </div>
                             </div>
@@ -89,9 +89,7 @@ for(var i = 0;i < lines.length;i++){
                     <div class="mb-4">
                     <% if user_signed_in? %>
                       <%= form_for @comment, url: song_comments_path(@song), method: :post, remote: true do %>
-                        <div class="d-flex mb-3"><span>Rate:</span>
-                            <div class="text-warning stars pl-2"><i class="la la-star"></i> <i class="la la-star"></i> <i class="la la-star"></i> <i class="la la-star"></i> <i class="la la-star"></i></div>
-                        </div>
+                        
                         <textarea name="comment" id="comment" cols="30" rows="5" class="form-control"></textarea>
                         <div class="text-right mt-2">
                             <button type="submit" class="btn btn-info btn-comment">Comment</button>
@@ -109,3 +107,8 @@ for(var i = 0;i < lines.length;i++){
             </div>
 <div class="playlist-modal"><%= render partial: "static_pages/playlist_modal" %></div>
                     <div class="create-modal"><%= render partial: "static_pages/create-modal" %></div>
+<script type="text/javascript">
+  $("#addToFavorite").click(function(){
+    $(this).css("transform","rotate(180deg)")
+  })
+</script>
