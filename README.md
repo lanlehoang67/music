@@ -1,24 +1,4 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+これはRuby On Railsで音楽のプロジェクトです。二つのバージョンがあります。
+これはこのプロジェクトの機能性：
+１．ユーザーは音楽を聞くことができます。
+2.音楽を追加することができます。
